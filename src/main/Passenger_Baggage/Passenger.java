@@ -71,4 +71,11 @@ public class Passenger {
         }
 
     }
+
+    public HandBaggage getBaggageByIndex(int i) {
+        if (i<baggage.length){
+            return baggage[i];
+        }
+        return null;
+    }
 }
