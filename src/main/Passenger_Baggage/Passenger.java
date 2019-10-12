@@ -11,13 +11,13 @@ public class Passenger {
     private int idPassenger;
     private String name;
     private Gender gender;
-    private Date birthdate;
+    private String birthdate;
     private String street;
     private String city;
     private String plz;
     private String passport_id;
 
-    public Passenger(int idPassenger, String name, Gender gender,Date birthdate, String street, String city, String plz, String passport_id){
+    public Passenger(int idPassenger, String name, Gender gender,String birthdate, String street, String city, String plz, String passport_id){
         this.idPassenger = idPassenger;
         this.name = name;
         this.gender = gender;
