@@ -10,4 +10,8 @@ public class Layer {
         this.layerText = layerText;
         this.handBaggage =handBaggage;
     }
+
+    public String getContent() {
+        return layerText;
+    }
 }
