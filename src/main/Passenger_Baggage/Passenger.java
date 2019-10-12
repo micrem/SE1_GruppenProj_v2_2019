@@ -8,6 +8,8 @@ import java.util.Date;
 
 public class Passenger {
 
+    private static int MAXBAGGAGE = 3;
+
     private int idPassenger;
     private String name;
     private Gender gender;
@@ -32,7 +34,19 @@ public class Passenger {
     }
 
     public void setBaggage(int[] baggageIDs){
-        this.baggageIDs = baggageIDs.clone();
+        int numOfBags=0;
+        //create array to fit all non-null baggageIDs
+        for (int bagID: baggageIDs
+             ) {
+            if (bagID!=0) numOfBags++;
+        }
+        this.baggageIDs = new int[numOfBags<=MAXBAGGAGE?numOfBags:MAXBAGGAGE];
+
+        numOfBags=0;
+        for (int bagID: baggageIDs
+        ) {
+            if (bagID!=0 && numOfBags<MAXBAGGAGE) this.baggageIDs[numOfBags++]=bagID;
+        }
     }
 
     public int[] getBaggageIDs() {
