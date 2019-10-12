@@ -22,4 +22,7 @@ public class OperatingStation implements  IOperatingStation{
     public void buttonLeft() {
 
     }
+    public BaggageScanner getBaggageScanner(){
+        return baggageScanner;
+    }
 }

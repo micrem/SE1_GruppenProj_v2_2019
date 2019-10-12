@@ -7,4 +7,8 @@ public class RollerConveyer {
         this.baggageScanner = baggageScanner;
         baggageScanner.setRollerConveyer(this);
     }
+
+    public BaggageScanner getBaggageScanner(){
+        return baggageScanner;
+    }
 }

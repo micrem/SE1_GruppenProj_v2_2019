@@ -1,11 +1,14 @@
 package Employees;
 
+import BaggageScanner.Tray;
+
 public interface iInspectorOperatingStation {
     void LogIn();
+    void CheckLuggage(Tray tray);
     void PushButtonRight();
-    void PushButtonTriangle();
+    void PushButtonSquare();
     void DiscoverKnife();
     void DiscoverGun();
     void DiscoverExplosive();
-    void PushButtonLeft(); //warum? dieser Button steht beim Inspektor der OS
+    void PushButtonLeft();
 }

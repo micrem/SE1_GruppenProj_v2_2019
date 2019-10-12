@@ -8,4 +8,7 @@ public class ManualPostControl {
         this.baggageScanner= baggageScanner;
         baggageScanner.setManualPostControl(this);
     }
+    public BaggageScanner getBaggageScanner(){
+        return baggageScanner;
+    }
 }

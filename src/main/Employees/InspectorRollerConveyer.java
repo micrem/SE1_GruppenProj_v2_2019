@@ -1,21 +1,24 @@
 package Employees;
 
 import BaggageScanner.RollerConveyer;
+import BaggageScanner.Tray;
 
+public class InspectorRollerConveyer extends Inspector implements iInspectorRollerConveyer {
 
-
-public class InspectorRollerConveyer extends Inspector implements iInspectorRollerConveyer{
 
     RollerConveyer assignedConveyer;
-    public void ExecutePush(){
-        //this.assignedConveyer.push(); //doesnt exist yet
-    }
+
 
     public InspectorRollerConveyer(int pid, String pname, String pbirthDate, boolean pisSenior, RollerConveyer passignedConveyer) {
         super(pid, pname, pbirthDate, pisSenior);
-        assignedConveyer=passignedConveyer;
+        assignedConveyer = passignedConveyer;
     }
-    @Override
-    public void Push(){}
 
+    @Override
+    public void PushTray() {
+        if (assignedConveyer.getBaggageScanner().getTray() != null) {
+            //assignedConveyer.moveTrayToScannerConveyer(assignedConveyer.getBaggageScanner().getTray());
+            //Methode existiert (noch) nicht
+        }
+    }
 }

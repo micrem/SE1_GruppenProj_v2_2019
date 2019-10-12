@@ -29,6 +29,9 @@ public class BaggageScanner implements IBaggageScanner {
         this.tray = tray;
         //else: do nothing;
     }
+    public Tray getTray(){
+        return tray;
+    }
 
     public void setRollerConveyer(RollerConveyer rollerConveyer){
         this.rollerConveyer = rollerConveyer;
