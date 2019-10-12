@@ -1,6 +1,7 @@
 package Passenger_Baggage;
 
 public class Layer {
+    public static int layerSize=10000;
 
     private String layerText;
     private HandBaggage handBaggage;
