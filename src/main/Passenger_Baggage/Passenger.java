@@ -17,6 +17,9 @@ public class Passenger {
     private String plz;
     private String passport_id;
 
+
+    private int[] baggageIDs;
+
     public Passenger(int idPassenger, String name, Gender gender,String birthdate, String street, String city, String plz, String passport_id){
         this.idPassenger = idPassenger;
         this.name = name;
@@ -27,4 +30,13 @@ public class Passenger {
         this.plz = plz;
         this.passport_id = passport_id;
     }
+
+    public void setBaggage(int[] baggageIDs){
+        this.baggageIDs = baggageIDs.clone();
+    }
+
+    public int[] getBaggageIDs() {
+        return baggageIDs;
+    }
+
 }
