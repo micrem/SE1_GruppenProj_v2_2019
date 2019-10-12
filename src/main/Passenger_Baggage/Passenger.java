@@ -24,7 +24,7 @@ public class Passenger {
 
     private int[] baggageIDs;
 
-    public Passenger(int idPassenger, String name, Gender gender,String birthdate, String street, String city, String plz, String passport_id){
+    public Passenger(int idPassenger, String name, Gender gender, String birthdate, String street, String city, String plz, String passport_id) {
         this.idPassenger = idPassenger;
         this.name = name;
         this.gender = gender;
@@ -35,20 +35,22 @@ public class Passenger {
         this.passport_id = passport_id;
     }
 
-    public void setBaggage(int[] baggageIDs){
-        int numOfBags=0;
+    public void setBaggageIDs(int[] baggageIDs) {
+        int numOfBags = 0;
         //create array to fit all non-null baggageIDs
-        for (int bagID: baggageIDs
-             ) {
-            if (bagID!=0) numOfBags++;
-        }
-        this.baggageIDs = new int[numOfBags<=MAXBAGGAGE?numOfBags:MAXBAGGAGE];
-
-        numOfBags=0;
-        for (int bagID: baggageIDs
+        for (int bagID : baggageIDs
         ) {
-            if (bagID!=0 && numOfBags<MAXBAGGAGE) this.baggageIDs[numOfBags++]=bagID;
+            if (bagID != 0) numOfBags++;
         }
+        this.baggageIDs = new int[numOfBags <= MAXBAGGAGE ? numOfBags : MAXBAGGAGE];
+
+        numOfBags = 0;
+        for (int bagID : baggageIDs
+        ) {
+            if (bagID != 0 && numOfBags < MAXBAGGAGE) this.baggageIDs[numOfBags++] = bagID;
+        }
+
+        baggage = new HandBaggage[numOfBags];
 
     }
 
@@ -57,5 +59,16 @@ public class Passenger {
     }
 
 
+    public void addHandBaggage(HandBaggage bag) {
+        if (baggage.length == 0) {
+            return;
+        }
+        for (int bagIndex = 0; bagIndex < baggage.length; bagIndex++) {
+            if (baggage[bagIndex] == null) {
+                baggage[bagIndex] = bag;
+                return;
+            }
+        }
 
+    }
 }
