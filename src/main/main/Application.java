@@ -7,6 +7,7 @@ import configuration.Configuration;
 import java.net.PasswordAuthentication;
 
 public class Application {
+    //hallo
     // Festlegung dea Algorithmus zur such nach verboten Gegenstaende
     Configuration config  = Configuration.KnuthMorrisPratt;
 
