@@ -11,4 +11,7 @@ public class RollerConveyer {
     public BaggageScanner getBaggageScanner(){
         return baggageScanner;
     }
+    public void MoveTrayToConveyerBelt(){
+
+    }
 }
