@@ -1,5 +1,5 @@
 ﻿#GEPÄCK-Projekt Ignores
-
+*.txt
 
 # Compiled class file
 *.class
