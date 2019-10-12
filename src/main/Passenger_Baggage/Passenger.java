@@ -19,6 +19,8 @@ public class Passenger {
     private String plz;
     private String passport_id;
 
+    private HandBaggage[] baggage;
+
 
     private int[] baggageIDs;
 
@@ -47,10 +49,13 @@ public class Passenger {
         ) {
             if (bagID!=0 && numOfBags<MAXBAGGAGE) this.baggageIDs[numOfBags++]=bagID;
         }
+
     }
 
     public int[] getBaggageIDs() {
         return baggageIDs;
     }
+
+
 
 }
