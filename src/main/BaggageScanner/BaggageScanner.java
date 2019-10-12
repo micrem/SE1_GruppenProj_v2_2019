@@ -50,8 +50,49 @@ public class BaggageScanner implements IBaggageScanner {
         this.workplaceSupervision = workplaceSupervision;
      }
 
+     public void moveBellForward(){
 
+     }
 
+    @Override
+    public void moveBeltBackward() {
+
+    }
+
+    @Override
+    public void scan() {
+
+    }
+
+    @Override
+    public void alarm() {
+
+    }
+
+    @Override
+    public void report() {
+
+    }
+
+    @Override
+    public void maintenance() {
+
+    }
+
+    @Override
+    public void onOffButton() {
+
+    }
+
+    @Override
+    public void setStatusScanner() {
+
+    }
+
+    @Override
+    public void getStatusBaggerScanner() {
+
+    }
 
 
 }
