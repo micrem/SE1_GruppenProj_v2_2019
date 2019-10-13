@@ -1,13 +1,13 @@
 package main;
 
-import BaggageScanner.BaggageScanner;
-import Employees.InspectorManualPostControl;
-import Employees.*;
-import Passenger_Baggage.Gender;
-import Passenger_Baggage.HandBaggage;
-import Passenger_Baggage.Passenger;
+import baggageScanner.BaggageScanner;
+import employees.InspectorManualPostControl;
+import employees.*;
+import passenger_Baggage.Gender;
+import passenger_Baggage.HandBaggage;
+import passenger_Baggage.Passenger;
 import configuration.Configuration;
-import FileReader.*;
+import fileReader.*;
 
 import java.io.IOException;
 import java.util.*;

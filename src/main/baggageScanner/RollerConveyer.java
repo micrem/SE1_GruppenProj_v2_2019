@@ -1,0 +1,17 @@
+package baggageScanner;
+
+public class RollerConveyer {
+    private BaggageScanner baggageScanner;
+
+    public RollerConveyer(BaggageScanner baggageScanner){
+        this.baggageScanner = baggageScanner;
+        baggageScanner.setRollerConveyer(this);
+    }
+
+    public BaggageScanner getBaggageScanner(){
+        return baggageScanner;
+    }
+    public void MoveTrayToConveyerBelt(){
+
+    }
+}
