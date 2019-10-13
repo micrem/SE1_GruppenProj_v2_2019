@@ -1,6 +1,17 @@
 package IDCard;
 
 public interface IIDCard {
-    void write(String content);
-    String read();
+    void writeStripe(String content);
+
+    String readStripe();
+
+    int getID();
+
+    String getValidUntilDate();
+
+    CardType getType();
+
+    boolean isLocked();
+
+
 }
