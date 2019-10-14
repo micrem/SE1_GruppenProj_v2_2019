@@ -24,21 +24,40 @@ public class BaggageScanner implements IBaggageScanner {
         WorkplaceSupervision workplaceSupervision1 = new WorkplaceSupervision(this);
     }
 
-    public void setTray(Tray tray){
-        //if state = passend
-        this.tray = tray;
-        //else: do nothing;
-    }
     public Tray getPlasticTray(){
         return tray;
     }
 
-    public void setRollerConveyer(RollerConveyer rollerConveyer){
+    public RollerConveyer getRollerConveyer() {
+        return rollerConveyer;
+    }
+
+    public Belt getBelt() {
+        return belt;
+    }
+
+    public OperatingStation getOperatingStation() {
+        return operatingStation;
+    }
+
+    public ManualPostControl getManualPostControl() {
+        return manualPostControl;
+    }
+
+    public WorkplaceSupervision getWorkplaceSupervision() {
+        return workplaceSupervision;
+    }
+
+    /*    public void setRollerConveyer(RollerConveyer rollerConveyer){
         this.rollerConveyer = rollerConveyer;
     }
 
     public void setBelt(Belt belt){
         this.belt = belt;
+    }
+
+    public void setTray(Tray tray){
+        this.tray = tray;
     }
 
     public void setOperatingStation(OperatingStation operatingStation){
@@ -51,7 +70,7 @@ public class BaggageScanner implements IBaggageScanner {
 
      public void setWorkplaceSupervision (WorkplaceSupervision workplaceSupervision){
         this.workplaceSupervision = workplaceSupervision;
-     }
+     }*/
 
      public void moveBellForward(){
 
