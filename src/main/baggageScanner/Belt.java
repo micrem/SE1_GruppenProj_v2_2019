@@ -2,6 +2,7 @@ package baggageScanner;
 
 public class Belt implements IBaggageScannerStation{
     private BaggageScanner baggageScanner;
+    private PlasticTray plasticTray;
 
     public Belt(BaggageScanner baggageScanner){
         this.baggageScanner = baggageScanner;
@@ -12,16 +13,18 @@ public class Belt implements IBaggageScannerStation{
 
     @Override
     public PlasticTray removePlasticTray() {
-        return null;
+
+        return plasticTray;
     }
 
     @Override
     public PlasticTray getPlasticTray() {
-        return null;
+        return plasticTray;
     }
 
     @Override
     public void putPlasticTray(PlasticTray plasticTray) {
+        this.plasticTray = plasticTray;
 
     }
 }
