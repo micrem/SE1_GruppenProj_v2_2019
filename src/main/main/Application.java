@@ -55,6 +55,10 @@ public class Application {
 
 
 
+        passengers.get(1).putBaggageInPlasticTray(BS1, testBag, plasticTray);
+
+
+
         inspOpStation.LogIn();//hier IDKarte Logik
 
 

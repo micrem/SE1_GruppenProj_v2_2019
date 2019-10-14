@@ -18,8 +18,10 @@ public class Tray implements IBaggageScannerStation{
     }
 
     @Override
-    public void putPlasticTray(PlasticTray plasticTray) {
-        this.plasticTray = plasticTray;
+    public void putPlasticTray(PlasticTray pplasticTray) {
+
+
+        this.plasticTray = pplasticTray;
     }
 
     public Tray(BaggageScanner baggageScanner){

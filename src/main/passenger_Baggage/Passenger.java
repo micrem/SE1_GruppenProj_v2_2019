@@ -85,6 +85,6 @@ public class Passenger {
         baggageScanner.getTray().putPlasticTray(plasticTray);
     }
     public void putPlasticTrayOnRollerConveyer(RollerConveyer rollerConveyer, PlasticTray plasticTray){
-        rollerConveyer.putPlasticTray(plasticTray);
+        rollerConveyer.putPlasticTray(rollerConveyer.getBaggageScanner().getTray().removePlasticTray());
     }
 }

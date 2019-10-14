@@ -16,12 +16,12 @@ public class BaggageScanner implements IBaggageScanner {
 
     public BaggageScanner (){
         this.status = StatusBaggageScanner.shutdown;
-        Tray tray1 = new Tray(this);
-        RollerConveyer rollerConveyer1 = new RollerConveyer(this);
-        Belt belt1 = new Belt(this);
-        OperatingStation operatingStation1 = new OperatingStation(this);
-        ManualPostControl manualPostControl1 = new ManualPostControl(this);
-        WorkplaceSupervision workplaceSupervision1 = new WorkplaceSupervision(this);
+        tray = new Tray(this);
+        rollerConveyer = new RollerConveyer(this);
+        belt = new Belt(this);
+        operatingStation = new OperatingStation(this);
+        manualPostControl = new ManualPostControl(this);
+        workplaceSupervision = new WorkplaceSupervision(this);
     }
 
     public Tray getTray(){
