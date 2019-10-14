@@ -6,7 +6,7 @@ public class WorkplaceSupervision implements IBaggageScannerStation{
 
     public  WorkplaceSupervision(BaggageScanner baggageScanner){
         this.baggageScanner = baggageScanner;
-        baggageScanner.setWorkplaceSupervision(this);
+        //baggageScanner.setWorkplaceSupervision(this);
     }
 
     @Override
@@ -23,6 +23,6 @@ public class WorkplaceSupervision implements IBaggageScannerStation{
 
     @Override
     public void putPlasticTray(PlasticTray plasticTray) {
-        this.plasticTray = plasticTray
+        this.plasticTray = plasticTray;
     }
 }

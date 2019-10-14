@@ -6,7 +6,7 @@ public class RollerConveyer implements  IBaggageScannerStation{
 
     public RollerConveyer(BaggageScanner baggageScanner){
         this.baggageScanner = baggageScanner;
-        baggageScanner.setRollerConveyer(this);
+        //baggageScanner.setRollerConveyer(this);
     }
 
     public BaggageScanner getBaggageScanner(){

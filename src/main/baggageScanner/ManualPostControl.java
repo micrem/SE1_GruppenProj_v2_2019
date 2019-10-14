@@ -7,7 +7,7 @@ public class ManualPostControl implements  IBaggageScannerStation{
 
     public ManualPostControl(BaggageScanner baggageScanner){
         this.baggageScanner= baggageScanner;
-        baggageScanner.setManualPostControl(this);
+        //baggageScanner.setManualPostControl(this);
     }
     public BaggageScanner getBaggageScanner(){
         return baggageScanner;

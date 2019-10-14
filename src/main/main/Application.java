@@ -1,7 +1,6 @@
 package main;
 
 import baggageScanner.BaggageScanner;
-import employees.InspectorManualPostControl;
 import employees.*;
 import passenger_Baggage.Gender;
 import passenger_Baggage.HandBaggage;
@@ -36,7 +35,17 @@ public class Application {
         System.out.println(testBag.getLayer(4).getContent().substring(0,50));
 
 
-        //iInspectorManualPostControl inspManCtrl= new InspectorManualPostControl(1, "Mueller", "10.10.1990",false);
+        iInspectorManualPostControl inspManCtrl= new InspectorManualPostControl(1, "Mueller", "10.10.1990",false);
+        iInspectorOperatingStation inspOpStation = new InspectorOperationStation(1, "Mueller", "10.10.1990",false);
+        iInspectorRollerConveyer inspRollConv = new InspectorRollerConveyer(1, "Mueller", "10.10.1990",false);
+        iSupervisor supervisor = new Supervisor(1, "Mueller", "10.10.1990",false, true);
+        iFederalPoliceOfficer fedOfficer = new FederalPoliceOfficer(1, "Mueller", "10.10.1990");
+        iTechnician techWorker = new Technician(1, "Mueller", "10.10.1990");
+
+        for (int i = 0; i < 10; i++) {
+            System.out.println(IDGenerator.getID());
+        }
+
         //scanner.registerInspectorManualContr(inspManCtrl);
         //read passanger data -> 2 Maps:
         //map id - passagierObject
@@ -154,7 +163,12 @@ public class Application {
     }
 
 
-
+    static class IDGenerator {
+        static int id = 0;
+        static int getID(){
+            return id++;
+        }
+    }
 
 }
 

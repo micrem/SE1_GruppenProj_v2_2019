@@ -6,7 +6,7 @@ public class Belt implements IBaggageScannerStation{
 
     public Belt(BaggageScanner baggageScanner){
         this.baggageScanner = baggageScanner;
-        baggageScanner.setBelt(this);
+        //baggageScanner.setBelt(this);
 
     }
 

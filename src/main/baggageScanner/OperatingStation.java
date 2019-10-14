@@ -3,10 +3,10 @@ package baggageScanner;
 public class OperatingStation implements  IOperatingStation, IBaggageScannerStation{
 
     private BaggageScanner baggageScanner;
-    private PlasticTray plasticTray
+    private PlasticTray plasticTray;
     public OperatingStation(BaggageScanner baggageScanner){
         this.baggageScanner = baggageScanner;
-        baggageScanner.setOperatingStation(this);
+        //baggageScanner.setOperatingStation(this);
     }
 
     @Override
@@ -41,7 +41,7 @@ public class OperatingStation implements  IOperatingStation, IBaggageScannerStat
 
     @Override
     public void putPlasticTray(PlasticTray plasticTray) {
-        this.plasticTray =plasticTray
+        this.plasticTray =plasticTray;
 
     }
 }
