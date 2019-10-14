@@ -15,5 +15,9 @@ public interface ICardReader {
 
     boolean hasCard();
 
+    boolean isCardLocked();
+
+    ProfileType getProfileType();
+
     //void writeCardStripe(char profileType, int pin);
 }

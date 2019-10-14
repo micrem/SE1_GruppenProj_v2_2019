@@ -11,7 +11,7 @@ public class CardReader implements ICardReader {
 
     @Override
     public void setKeyAES(String keyAES) {
-        keyAES = keyAES;
+        this.keyAES = keyAES;
         isKeySet = true;
     }
 
@@ -46,6 +46,16 @@ public class CardReader implements ICardReader {
     @Override
     public boolean hasCard() {
         return hasCard;
+    }
+
+    @Override
+    public boolean isCardLocked() {
+        return false;
+    }
+
+    @Override
+    public ProfileType getProfileType() {
+        return null;
     }
 
 }
