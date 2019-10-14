@@ -15,8 +15,8 @@ public class InspectorRollerConveyer extends Inspector implements iInspectorRoll
 
     @Override
     public void PushTray() {
-        if (assignedConveyer.getBaggageScanner().getTray() != null) {
-            //assignedConveyer.moveTrayToScannerConveyer(assignedConveyer.getBaggageScanner().getTray());
+        if (assignedConveyer.getBaggageScanner().getPlasticTray() != null) {
+            //assignedConveyer.moveTrayToScannerConveyer(assignedConveyer.getBaggageScanner().getPlasticTray());
             //Methode existiert (noch) nicht
         }
     }

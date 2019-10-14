@@ -34,7 +34,7 @@ public class InspectorOperationStation extends Inspector implements iInspectorOp
     @Override
     public void PushButtonSquare(){
         //Methode this.CheckBaggage(Tray tray);
-        CheckLuggage(assignedOS.getBaggageScanner().getTray());
+        CheckLuggage(assignedOS.getBaggageScanner().getPlasticTray());
     }
     @Override
     public void DiscoverKnife(){

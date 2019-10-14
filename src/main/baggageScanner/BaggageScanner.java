@@ -29,7 +29,7 @@ public class BaggageScanner implements IBaggageScanner {
         this.tray = tray;
         //else: do nothing;
     }
-    public Tray getTray(){
+    public Tray getPlasticTray(){
         return tray;
     }
 

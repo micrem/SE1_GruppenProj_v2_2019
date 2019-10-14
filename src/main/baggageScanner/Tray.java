@@ -1,19 +1,24 @@
 package baggageScanner;
 
-import passenger_Baggage.HandBaggage;
-
-public class Tray {
+public class Tray implements IBaggageScannerStation{
+    //plasticTray station
     private BaggageScanner baggageScanner;
-    private HandBaggage handBaggage;
+    private PlasticTray plasticTray;
 
-    public HandBaggage getHandBaggage() {
-        HandBaggage tempBaggage = this.handBaggage;
-        this.handBaggage = null;
+    @Override
+    public PlasticTray getPlasticTray() {
+        PlasticTray tempBaggage = this.plasticTray;
+        this.plasticTray = null;
         return tempBaggage;
     }
 
-    public void setHandBaggage(HandBaggage handBaggage) {
-        this.handBaggage = handBaggage;
+    @Override
+    public void putPlasticTray(PlasticTray plasticTray) {
+
+    }
+
+    public void setPlasticTray(PlasticTray plasticTray) {
+        this.plasticTray = plasticTray;
     }
 
     public Tray(BaggageScanner baggageScanner){
