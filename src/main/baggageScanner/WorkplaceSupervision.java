@@ -2,6 +2,7 @@ package baggageScanner;
 
 public class WorkplaceSupervision implements IBaggageScannerStation{
     private BaggageScanner baggageScanner;
+    private PlasticTray plasticTray;
 
     public  WorkplaceSupervision(BaggageScanner baggageScanner){
         this.baggageScanner = baggageScanner;
@@ -10,16 +11,18 @@ public class WorkplaceSupervision implements IBaggageScannerStation{
 
     @Override
     public PlasticTray removePlasticTray() {
-        return null;
+        return plasticTray;
     }
 
     @Override
     public PlasticTray getPlasticTray() {
-        return null;
+        PlasticTray tempBaggage = this.plasticTray;
+        this.plasticTray = null;
+        return tempBaggage;
     }
 
     @Override
     public void putPlasticTray(PlasticTray plasticTray) {
-
+        this.plasticTray = plasticTray
     }
 }

@@ -19,7 +19,9 @@ public class Belt implements IBaggageScannerStation{
 
     @Override
     public PlasticTray getPlasticTray() {
-        return plasticTray;
+        PlasticTray tempBaggage = this.plasticTray;
+        this.plasticTray = null;
+        return tempBaggage;
     }
 
     @Override
