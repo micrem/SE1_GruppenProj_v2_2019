@@ -23,7 +23,7 @@ public class Application {
         Configuration config  = Configuration.KnuthMorrisPratt;
 
         // Gepäkscännner legt seiene Objekte an
-        BaggageScanner BS1=new BaggageScanner();
+        BaggageScanner BS1 = new BaggageScanner();
 
         Map<Integer, Passenger> passengers = new HashMap<>();
 
