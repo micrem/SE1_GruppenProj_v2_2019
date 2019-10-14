@@ -21,31 +21,29 @@ public class Application {
         // Festlegung dea Algorithmus zur such nach verboten Gegenstaende
         Configuration config  = Configuration.KnuthMorrisPratt;
 
+
+
+
+
+        iInspectorManualPostControl inspManCtrl= new InspectorManualPostControl(IDGenerator.getID(), "Mueller", "10.10.1990",false);
+        iInspectorOperatingStation inspOpStation = new InspectorOperationStation(IDGenerator.getID(), "Mueller", "10.10.1990",false);
+        iInspectorRollerConveyer inspRollConv = new InspectorRollerConveyer(IDGenerator.getID(), "Mueller", "10.10.1990",false);
+        iSupervisor supervisor = new Supervisor(IDGenerator.getID(), "Mueller", "10.10.1990",false, true);
+        iFederalPoliceOfficer fedOfficer = new FederalPoliceOfficer(IDGenerator.getID(), "Mueller", "10.10.1990");
+        iTechnician techWorker = new Technician(IDGenerator.getID(), "Mueller", "10.10.1990");
+
         // Gepäkscännner legt seiene Objekte an
         BaggageScanner BS1 = new BaggageScanner();
 
         Map<Integer, Passenger> passengers = new HashMap<>();
 
+        HandBaggage testBag = passengers.get(1).getBaggageByIndex(0);
         initPassengers(passengers);
         initAssignments(passengers);
         initPassengerBaggage(passengers.get(1));
 
-        HandBaggage testBag = passengers.get(1).getBaggageByIndex(0);
 
         System.out.println(testBag.getLayer(4).getContent().substring(0,50));
-
-
-        iInspectorManualPostControl inspManCtrl= new InspectorManualPostControl(1, "Mueller", "10.10.1990",false);
-        iInspectorOperatingStation inspOpStation = new InspectorOperationStation(1, "Mueller", "10.10.1990",false);
-        iInspectorRollerConveyer inspRollConv = new InspectorRollerConveyer(1, "Mueller", "10.10.1990",false);
-        iSupervisor supervisor = new Supervisor(1, "Mueller", "10.10.1990",false, true);
-        iFederalPoliceOfficer fedOfficer = new FederalPoliceOfficer(1, "Mueller", "10.10.1990");
-        iTechnician techWorker = new Technician(1, "Mueller", "10.10.1990");
-
-        for (int i = 0; i < 10; i++) {
-            System.out.println(IDGenerator.getID());
-        }
-
         //scanner.registerInspectorManualContr(inspManCtrl);
         //read passanger data -> 2 Maps:
         //map id - passagierObject
