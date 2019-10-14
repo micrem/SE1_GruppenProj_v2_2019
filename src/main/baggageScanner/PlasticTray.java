@@ -5,6 +5,7 @@ import passenger_Baggage.HandBaggage;
 public class PlasticTray {
     private HandBaggage handbaggage;
 
+
     public HandBaggage getHandbaggage() {
         return handbaggage;
     }
