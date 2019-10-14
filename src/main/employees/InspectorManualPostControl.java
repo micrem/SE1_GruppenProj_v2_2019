@@ -8,6 +8,8 @@ public class InspectorManualPostControl extends Inspector implements iInspectorM
     public InspectorManualPostControl(int pid, String pname, String pbirthDate, boolean pisSenior) {
         super(pid, pname, pbirthDate, pisSenior);
     }
+
+    @Override
     public void setAssignedMPC(ManualPostControl passignedMPC){assignedMPC=passignedMPC;}
     @Override
     public void ConfiscateKnife(){

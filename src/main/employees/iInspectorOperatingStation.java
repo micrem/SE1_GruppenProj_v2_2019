@@ -1,5 +1,6 @@
 package employees;
 
+import baggageScanner.OperatingStation;
 import baggageScanner.Tray;
 
 public interface iInspectorOperatingStation {
@@ -11,4 +12,5 @@ public interface iInspectorOperatingStation {
     void DiscoverGun();
     void DiscoverExplosive();
     void PushButtonLeft();
+    void setAssignedOS(OperatingStation passignedOS);
 }

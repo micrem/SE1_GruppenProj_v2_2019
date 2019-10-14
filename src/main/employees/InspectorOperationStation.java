@@ -9,7 +9,8 @@ public class InspectorOperationStation extends Inspector implements iInspectorOp
     public InspectorOperationStation(int pid, String pname, String pbirthDate, boolean pisSenior) {
         super(pid, pname, pbirthDate, pisSenior);
     }
-    public void setOS(OperatingStation passignedOS){assignedOS=passignedOS;}
+    @Override
+    public void setAssignedOS(OperatingStation passignedOS){assignedOS=passignedOS;}
     @Override
     public void CheckLuggage(Tray tray){
         //Methodeeeeeee
