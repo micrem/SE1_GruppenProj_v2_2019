@@ -92,10 +92,6 @@ public class Application {
         int[] bagIDs = passenger.getBaggageIDs();
         for (int i=0;i<bagIDs.length;i++){
             IFileReader fRead = new BaggageScannerFileReader();
-            int passID;
-            int[] baggageIDs = new int[3];
-            int numBaggage;
-
             try {
                 String baggage_filePath = "data/hand_baggage_"+bagIDs[i]+".txt";
                 String[] baggage_content = fRead.readFileToString(baggage_filePath);
@@ -128,11 +124,11 @@ public class Application {
                 //  // passenger_id;number_of_hand_baggage;hand_baggage_id(s)
                 if (assignment.contains("//")) continue;
                 String[] subStrs = assignment.split("[,;]");
-                passID = Integer.valueOf(subStrs[0]);
-                numBaggage = Integer.valueOf(subStrs[1]);
+                passID = Integer.parseInt(subStrs[0]);
+                numBaggage = Integer.parseInt(subStrs[1]);
                 Arrays.fill(baggageIDs, 0);
                 for (int i = 0; i < numBaggage; i++) {
-                    baggageIDs[i] = Integer.valueOf(subStrs[i + 2]);
+                    baggageIDs[i] = Integer.parseInt(subStrs[i + 2]);
                 }
                 if (passengers.containsKey(passID)) {
                     passengers.get(passID).setBaggageIDs(baggageIDs);
@@ -171,7 +167,7 @@ public class Application {
                     System.out.println("Faulty passenger data found at ID '"+id+"', discarding");
                     continue;
                 }
-                passID = Integer.valueOf(passSubStrs[0]);
+                passID = Integer.parseInt(passSubStrs[0]);
                 name = passSubStrs[1];
                 gender = passSubStrs[2].equalsIgnoreCase("male") ? Gender.male : Gender.female;
                 birthdate = passSubStrs[3];
@@ -187,7 +183,6 @@ public class Application {
         }
     }
 
-
     static class IDGenerator {
         static int id = 0;
         static int getID(){
@@ -196,25 +191,3 @@ public class Application {
     }
 
 }
-
-
-
-/*  DELET THIS
-
-    BaggageScanner scannerA = new BaggageScanner();
-
-    Passagier passagier1 = new Passagier();
-
-    passagier1.putBaggageInTray(scannerA );
-
-
-    loop passagiersArray into passagier
-            passagier.putBaggageInTray(checkpoint);
-    end loop;
-
-
-    checkpoint.checkPassagiers(passagierArray);
-
-    InterfaceScanner scanner = new BaggageScanner();
-
-    scanner.*/
