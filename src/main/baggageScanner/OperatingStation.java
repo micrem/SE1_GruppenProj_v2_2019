@@ -1,6 +1,6 @@
 package baggageScanner;
 
-public class OperatingStation implements  IOperatingStation{
+public class OperatingStation implements  IOperatingStation, IBaggageScannerStation{
 
     private BaggageScanner baggageScanner;
     public OperatingStation(BaggageScanner baggageScanner){
@@ -24,5 +24,20 @@ public class OperatingStation implements  IOperatingStation{
     }
     public BaggageScanner getBaggageScanner(){
         return baggageScanner;
+    }
+
+    @Override
+    public PlasticTray removePlasticTray() {
+        return null;
+    }
+
+    @Override
+    public PlasticTray getPlasticTray() {
+        return null;
+    }
+
+    @Override
+    public void putPlasticTray(PlasticTray plasticTray) {
+
     }
 }

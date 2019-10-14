@@ -1,6 +1,6 @@
 package baggageScanner;
 
-public class ManualPostControl {
+public class ManualPostControl implements  IBaggageScannerStation{
 
     private BaggageScanner baggageScanner;
 
@@ -10,5 +10,20 @@ public class ManualPostControl {
     }
     public BaggageScanner getBaggageScanner(){
         return baggageScanner;
+    }
+
+    @Override
+    public PlasticTray removePlasticTray() {
+        return null;
+    }
+
+    @Override
+    public PlasticTray getPlasticTray() {
+        return null;
+    }
+
+    @Override
+    public void putPlasticTray(PlasticTray plasticTray) {
+
     }
 }

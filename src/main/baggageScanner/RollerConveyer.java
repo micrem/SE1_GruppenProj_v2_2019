@@ -1,6 +1,6 @@
 package baggageScanner;
 
-public class RollerConveyer {
+public class RollerConveyer implements  IBaggageScannerStation{
     private BaggageScanner baggageScanner;
 
     public RollerConveyer(BaggageScanner baggageScanner){
@@ -12,6 +12,21 @@ public class RollerConveyer {
         return baggageScanner;
     }
     public void MoveTrayToConveyerBelt(){
+
+    }
+
+    @Override
+    public PlasticTray removePlasticTray() {
+        return null;
+    }
+
+    @Override
+    public PlasticTray getPlasticTray() {
+        return null;
+    }
+
+    @Override
+    public void putPlasticTray(PlasticTray plasticTray) {
 
     }
 }
