@@ -24,7 +24,7 @@ public class BaggageScanner implements IBaggageScanner {
         WorkplaceSupervision workplaceSupervision1 = new WorkplaceSupervision(this);
     }
 
-    public Tray getPlasticTray(){
+    public Tray getTray(){
         return tray;
     }
 
@@ -107,13 +107,20 @@ public class BaggageScanner implements IBaggageScanner {
     }
 
     @Override
-    public void setStatusScanner() {
-
+    public void setStatusScanner(StatusBaggageScanner newStatus) {
+         this.status=newStatus;
+    }
+    @Override
+    public void alarmButtonPushed(){
+         if(this.status==StatusBaggageScanner.inUse)
+            setStatusScanner(StatusBaggageScanner.locked);
+         else
+             System.out.println("Error: Scanner aktuell nicht im inUse-Modus");
     }
 
     @Override
-    public void getStatusBaggerScanner() {
-
+    public StatusBaggageScanner getStatusBaggerScanner() {
+        return this.status;
     }
 
 

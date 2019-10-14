@@ -8,7 +8,7 @@ public interface IBaggageScanner {
     void report();
     void maintenance();
     void onOffButton();
-    void setStatusScanner();
-    void getStatusBaggerScanner();
-
+    void setStatusScanner(StatusBaggageScanner newStatus);
+    StatusBaggageScanner getStatusBaggerScanner();
+    void alarmButtonPushed();
 }

@@ -14,12 +14,12 @@ public class ManualPostControl implements  IBaggageScannerStation{
     }
 
     @Override
-    public PlasticTray removePlasticTray() {
+    public PlasticTray getPlasticTray() {
         return plasticTray;
     }
 
     @Override
-    public PlasticTray getPlasticTray() {
+    public PlasticTray removePlasticTray() {
         PlasticTray tempBaggage = this.plasticTray;
         this.plasticTray = null;
         return tempBaggage;

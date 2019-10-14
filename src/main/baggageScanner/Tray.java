@@ -6,12 +6,12 @@ public class Tray implements IBaggageScannerStation{
     private PlasticTray plasticTray;
 
     @Override
-    public PlasticTray removePlasticTray() {
-        return null;
+    public PlasticTray getPlasticTray() {
+        return plasticTray;
     }
 
     @Override
-    public PlasticTray getPlasticTray() {
+    public PlasticTray removePlasticTray() {
         PlasticTray tempBaggage = this.plasticTray;
         this.plasticTray = null;
         return tempBaggage;

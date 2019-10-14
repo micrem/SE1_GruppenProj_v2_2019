@@ -1,6 +1,7 @@
 package main;
 
 import baggageScanner.BaggageScanner;
+import baggageScanner.PlasticTray;
 import employees.*;
 import passenger_Baggage.Gender;
 import passenger_Baggage.HandBaggage;
@@ -34,13 +35,34 @@ public class Application {
 
         // Gepäkscännner legt seiene Objekte an
         BaggageScanner BS1 = new BaggageScanner();
+        PlasticTray plasticTray=new PlasticTray();
+
+        inspManCtrl.setAssignedMPC(BS1.getManualPostControl());
+        inspOpStation.setAssignedOS(BS1.getOperatingStation());
+        inspRollConv.setRC(BS1.getRollerConveyer());
+
+        supervisor.setAssignedWorkplaceSupervision(BS1.getWorkplaceSupervision());
+        fedOfficer.setAssignedBaggageScanner(BS1);
 
         Map<Integer, Passenger> passengers = new HashMap<>();
 
-        HandBaggage testBag = passengers.get(1).getBaggageByIndex(0);
         initPassengers(passengers);
         initAssignments(passengers);
         initPassengerBaggage(passengers.get(1));
+
+        HandBaggage testBag = passengers.get(1).getBaggageByIndex(0);
+        plasticTray.setHandbaggage(testBag);
+
+
+
+        inspOpStation.LogIn();//hier IDKarte Logik
+
+
+        //START OF SECURITY
+        passengers.get(1).putBaggageInPlasticTray(BS1, testBag, plasticTray);
+        passengers.get(1).putPlasticTrayOnRollerConveyer(BS1.getRollerConveyer(), plasticTray);
+
+        inspRollConv.PushTray();
 
 
         System.out.println(testBag.getLayer(4).getContent().substring(0,50));
@@ -133,8 +155,8 @@ public class Application {
         try {
             String[] passengerStrings = fRead.readFileToString("data/passenger.txt");
             // id,name,gender,birthdate,address,passport_id
-            for (String passengerString: passengerStrings
-            ) {
+            for (String passengerString: passengerStrings)
+            {
                 if (passengerString.contains("//")) continue;
 
                 passSubStrs = passengerString.split(",");

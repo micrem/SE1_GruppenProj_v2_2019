@@ -4,6 +4,10 @@ package passenger_Baggage;
 // id,name,gender,birthdate,address,passport_id
 //1,Nicole Stewart,female,30.09.1988,39 Green Lane,Bath,BA14 6VW,R29IVXGBE
 
+import baggageScanner.BaggageScanner;
+import baggageScanner.PlasticTray;
+import baggageScanner.RollerConveyer;
+
 public class Passenger {
 
     private static int MAXBAGGAGE = 3;
@@ -75,5 +79,12 @@ public class Passenger {
             return baggage[i];
         }
         return null;
+    }
+    public void putBaggageInPlasticTray(BaggageScanner baggageScanner, HandBaggage baggage, PlasticTray plasticTray){
+        plasticTray.setHandbaggage(baggage);
+        baggageScanner.getTray().putPlasticTray(plasticTray);
+    }
+    public void putPlasticTrayOnRollerConveyer(RollerConveyer rollerConveyer, PlasticTray plasticTray){
+        rollerConveyer.putPlasticTray(plasticTray);
     }
 }

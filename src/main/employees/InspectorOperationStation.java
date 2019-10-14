@@ -16,10 +16,12 @@ public class InspectorOperationStation extends Inspector implements iInspectorOp
         //Methodeeeeeee
         if(true/*messer*/)
             DiscoverKnife();
-        else if(true/*waffe*/)
-            DiscoverGun();
-        else if(true/*expl*/)
-            DiscoverExplosive();
+        else if(true/*waffe*/){
+            pushAlarmButton();
+            DiscoverGun();}
+        else if(true/*expl*/){
+            pushAlarmButton();
+            DiscoverExplosive();}
         else
             //fuck yeah
         ;
@@ -40,21 +42,22 @@ public class InspectorOperationStation extends Inspector implements iInspectorOp
     }
     @Override
     public void DiscoverKnife(){
+        System.out.println("Messer an der {0} Stelle gefunden");
         //Methode InsMPC.ConfiscateKnife(Tray tray);
     }
     @Override
     public void DiscoverGun(){
-        //Scanner sperren
-        //Methode BPZ.ConfiscateGun(Tray tray);
-        //noch verhaftet den Passagier
-        //this.PushButtonLeft(Tray tray);
+        System.out.println("Waffe an der {0} Stelle gefunden, Alarm!");
     }
     @Override
     public void DiscoverExplosive(){
-
+        System.out.println("Sprengstoff an der {0} Stelle gefunden, Alarm!");
     }
     @Override
     public void PushButtonLeft(){
         //InsRC.PushTray(Tray tray);
+    }
+    public void pushAlarmButton(){
+        assignedOS.getBaggageScanner().alarmButtonPushed();
     }
 }
