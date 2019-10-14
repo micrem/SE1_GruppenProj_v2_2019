@@ -1,13 +1,19 @@
 package baggageScanner;
 
 public enum ProhibitedItems {
-    knife,
-    explosive,
-    gun
+    knife("kn!fe"),
+    explosive("exp|os!ve"),
+    gun("glock|7");
 
-    //Idee für Sonderzeichen geht nicht
- //   kn_fe("kn!fe"),
- //   exp_os_ve("exp|os!ve"),
-    //glock|7,
+    private String itemString;
+
+    ProhibitedItems(String itemString) {
+        this.itemString = itemString;
+    }
+
+    String getItemString() {
+        return itemString;
+    }
 }
+
 
