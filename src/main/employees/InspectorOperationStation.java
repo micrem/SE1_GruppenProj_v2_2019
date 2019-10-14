@@ -1,6 +1,7 @@
 package employees;
 
 import baggageScanner.OperatingStation;
+import baggageScanner.PlasticTray;
 import baggageScanner.Tray;
 
 
@@ -12,7 +13,7 @@ public class InspectorOperationStation extends Inspector implements iInspectorOp
     @Override
     public void setAssignedOS(OperatingStation passignedOS){assignedOS=passignedOS;}
     @Override
-    public void CheckLuggage(Tray tray){
+    public void CheckLuggage(PlasticTray plasticTray){
         //Methodeeeeeee
         if(true/*messer*/)
             DiscoverKnife();
@@ -33,12 +34,12 @@ public class InspectorOperationStation extends Inspector implements iInspectorOp
     }
     @Override
     public void PushButtonRight(){
-
+        assignedOS.putPlasticTray(assignedOS.getBaggageScanner().getBelt().getPlasticTray());
     }
     @Override
     public void PushButtonSquare(){
         //Methode this.CheckBaggage(Tray tray);
-        CheckLuggage(assignedOS.getBaggageScanner().getTray());
+        CheckLuggage(assignedOS.getPlasticTray());
     }
     @Override
     public void DiscoverKnife(){

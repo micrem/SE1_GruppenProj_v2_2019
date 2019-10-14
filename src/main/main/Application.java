@@ -65,6 +65,10 @@ public class Application {
 
         inspRollConv.PushTray();
 
+        inspOpStation.PushButtonRight();
+        inspOpStation.PushButtonSquare();
+        System.out.println("so far so good");
+
 
         System.out.println(testBag.getLayer(4).getContent().substring(0,50));
         //scanner.registerInspectorManualContr(inspManCtrl);

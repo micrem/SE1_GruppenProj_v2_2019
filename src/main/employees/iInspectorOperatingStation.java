@@ -1,11 +1,11 @@
 package employees;
 
 import baggageScanner.OperatingStation;
-import baggageScanner.Tray;
+import baggageScanner.PlasticTray;
 
 public interface iInspectorOperatingStation {
     void LogIn();
-    void CheckLuggage(Tray tray);
+    void CheckLuggage(PlasticTray plasticTray);
     void PushButtonRight();
     void PushButtonSquare();
     void DiscoverKnife();
