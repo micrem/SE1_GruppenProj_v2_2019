@@ -6,10 +6,10 @@ import baggageScanner.Tray;
 
 public class InspectorOperationStation extends Inspector implements iInspectorOperatingStation{
     OperatingStation assignedOS;
-    public InspectorOperationStation(int pid, String pname, String pbirthDate, boolean pisSenior, OperatingStation passignedOS) {
+    public InspectorOperationStation(int pid, String pname, String pbirthDate, boolean pisSenior) {
         super(pid, pname, pbirthDate, pisSenior);
-        assignedOS=passignedOS;
     }
+    public void setOS(OperatingStation passignedOS){assignedOS=passignedOS;}
     @Override
     public void CheckLuggage(Tray tray){
         //Methodeeeeeee
@@ -23,9 +23,10 @@ public class InspectorOperationStation extends Inspector implements iInspectorOp
             //fuck yeah
         ;
     }
+
     @Override
     public void LogIn(){
-        //logs in
+        System.out.println("Inspector has logged in successfully."); //spaeter ueberschreiben mit methoden aus cardreader
     }
     @Override
     public void PushButtonRight(){

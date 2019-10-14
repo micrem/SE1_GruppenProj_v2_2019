@@ -8,10 +8,10 @@ public class InspectorRollerConveyer extends Inspector implements iInspectorRoll
     RollerConveyer assignedConveyer;
 
 
-    public InspectorRollerConveyer(int pid, String pname, String pbirthDate, boolean pisSenior, RollerConveyer passignedConveyer) {
+    public InspectorRollerConveyer(int pid, String pname, String pbirthDate, boolean pisSenior) {
         super(pid, pname, pbirthDate, pisSenior);
-        assignedConveyer = passignedConveyer;
     }
+    public void setRC(RollerConveyer passignedRC){assignedConveyer=passignedRC;}
 
     @Override
     public void PushTray() {

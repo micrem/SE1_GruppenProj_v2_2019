@@ -36,7 +36,7 @@ public class Application {
         System.out.println(testBag.getLayer(4).getContent().substring(0,50));
 
 
-        iInspectorManualPostControl inspManCtrl= new InspectorManualPostControl(1, "Mueller", "10.10.1990",false);
+        //iInspectorManualPostControl inspManCtrl= new InspectorManualPostControl(1, "Mueller", "10.10.1990",false);
         //scanner.registerInspectorManualContr(inspManCtrl);
         //read passanger data -> 2 Maps:
         //map id - passagierObject
