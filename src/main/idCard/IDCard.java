@@ -13,13 +13,11 @@ public class IDCard implements IIDCard {
         this.validUntil = validUntil;
         this.isLocked = false;
         this.type = type;
+        magnetStripe = new MagnetStripe();
     }
 
     @Override
     public void writeStripe(String content) {
-        if(magnetStripe == null) {
-            magnetStripe = new MagnetStripe();
-        }
         magnetStripe.writeStripe(content);
     }
 
@@ -47,4 +45,10 @@ public class IDCard implements IIDCard {
     public boolean isLocked() {
         return isLocked;
     }
+
+    @Override
+    public void lockCard() {
+        isLocked = true;
+    }
+
 }

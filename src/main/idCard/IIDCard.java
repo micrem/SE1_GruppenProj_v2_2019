@@ -13,5 +13,7 @@ public interface IIDCard {
 
     boolean isLocked();
 
+    void lockCard();
+
 
 }
