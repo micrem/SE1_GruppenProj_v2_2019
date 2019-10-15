@@ -1,7 +1,9 @@
 package baggageScanner;
 
+import employees.FederalPoliceOfficer;
+
 public interface IBaggageScanner {
-    void moveBellForward();
+    void moveBeltForward();
     void moveBeltBackward();
     void scan();
     void alarm();
@@ -11,4 +13,20 @@ public interface IBaggageScanner {
     void setStatusScanner(StatusBaggageScanner newStatus);
     StatusBaggageScanner getStatusBaggerScanner();
     void alarmButtonPushed();
+
+    Tray getTray();
+
+    RollerConveyer getRollerConveyer();
+
+    Belt getBelt();
+
+    OperatingStation getOperatingStation();
+
+    ManualPostControl getManualPostControl();
+
+    WorkplaceSupervision getWorkplaceSupervision();
+
+    void setFederalPoliceOfficer(FederalPoliceOfficer federalPoliceOfficer);
+
+    FederalPoliceOfficer getFederalPoliceOfficer();
 }

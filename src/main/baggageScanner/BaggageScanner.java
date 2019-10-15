@@ -27,35 +27,43 @@ public class BaggageScanner implements IBaggageScanner {
         workplaceSupervision = new WorkplaceSupervision(this);
     }
 
+    @Override
     public Tray getTray(){
         return trayStation;
     }
 
+    @Override
     public RollerConveyer getRollerConveyer() {
         return rollerConveyer;
     }
 
+    @Override
     public Belt getBelt() {
         return beltStation;
     }
 
+    @Override
     public OperatingStation getOperatingStation() {
         return operatingStation;
     }
 
+    @Override
     public ManualPostControl getManualPostControl() {
         return manualPostControl;
     }
 
+    @Override
     public WorkplaceSupervision getWorkplaceSupervision() {
         return workplaceSupervision;
     }
 
+    @Override
     public void setFederalPoliceOfficer(FederalPoliceOfficer federalPoliceOfficer){
         this.federalPoliceOfficer=federalPoliceOfficer;
 
     }
 
+    @Override
     public FederalPoliceOfficer getFederalPoliceOfficer(){
         return federalPoliceOfficer;
     }
@@ -85,7 +93,7 @@ public class BaggageScanner implements IBaggageScanner {
      }*/
 
     @Override
-     public void moveBellForward(){
+     public void moveBeltForward(){
 
      }
 
