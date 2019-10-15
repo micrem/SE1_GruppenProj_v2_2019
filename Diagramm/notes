@@ -1,5 +1,11 @@
+TO DO:
+move 3 times pin-entering into employee.attemptLogin(cardReader)
+sleep
+
+
+DONE:
 add ability to write magnetstrips/cards
 
 add card creation to employees/ individual classes?
-add setPinProfile to cardReader? (how to protect method from abuse? add separate cardWriter?)
+add setPinProfile to cardReader?
 add getCard() to employees
