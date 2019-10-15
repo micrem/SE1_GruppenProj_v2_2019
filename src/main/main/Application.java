@@ -1,6 +1,7 @@
 package main;
 
 import baggageScanner.BaggageScanner;
+import baggageScanner.IBaggageScanner;
 import baggageScanner.PlasticTray;
 import cardReader.*;
 import employees.*;
@@ -14,6 +15,7 @@ import configuration.Configuration;
 import fileReader.*;
 
 import java.io.IOException;
+import java.time.LocalTime;
 import java.util.*;
 
 public class Application {
@@ -21,20 +23,60 @@ public class Application {
     private static final String keyAES = "Hallo Welt";
 
     public static void main(String[] args) {
+        Random r = new Random();
+        r.setSeed(LocalTime.now().toNanoOfDay());
 
         // Festlegung dea Algorithmus zur such nach verboten Gegenstaende
         Configuration config = Configuration.KnuthMorrisPratt;
 
-        iInspectorManualPostControl inspManCtrl = new InspectorManualPostControl(IDGenerator.getID(), "Mueller", "10.10.1990", false);
-        iInspectorOperatingStation inspOpStation = new InspectorOperationStation(IDGenerator.getID(), "Mueller", "10.10.1990", false);
-        iInspectorRollerConveyer inspRollConv = new InspectorRollerConveyer(IDGenerator.getID(), "Mueller", "10.10.1990", false);
-        iSupervisor supervisor = new Supervisor(IDGenerator.getID(), "Mueller", "10.10.1990", false, true);
-        FederalPoliceOfficeRegis federalPoliceOfficeRegis = new FederalPoliceOfficeRegis();
-        iFederalPoliceOfficer fedOfficer = new FederalPoliceOfficer(IDGenerator.getID(), "Mueller", "10.10.1990", "PolizeiPraesedent", federalPoliceOfficeRegis);
-        iTechnician techWorker = new Technician(IDGenerator.getID(), "Mueller", "10.10.1990");
-
         // Gepäkscännner legt seiene Objekte an
-        BaggageScanner BS1 = new BaggageScanner();
+        BaggageScanner BS1 = new BaggageScanner(keyAES);
+
+        String cardValidUntil = "2.2.2222";
+        IIDCard tempCard;
+        ICardReader cardReader = BS1.getOperatingStation().getCardReader();
+        int tempPin;
+
+        iInspectorManualPostControl inspManCtrl = new InspectorManualPostControl(IDGenerator.getID(), "Mueller", "10.10.1990", false);
+            tempPin = r.nextInt(9999);
+            tempCard = getCardWithPinType( cardReader, IDGenerator.getLastID(), cardValidUntil, CardType.staff, ProfileType.O,tempPin);
+            inspManCtrl.giveCard(tempCard);
+            inspManCtrl.giveCardPin(tempPin);
+
+        iInspectorOperatingStation inspOpStation = new InspectorOperationStation(IDGenerator.getID(), "Mueller", "10.10.1990", false);
+            tempPin = r.nextInt(9999);
+            tempCard = getCardWithPinType( cardReader, IDGenerator.getLastID(), cardValidUntil, CardType.staff, ProfileType.O,tempPin);
+            inspOpStation.giveCard(tempCard);
+            inspOpStation.giveCardPin(tempPin);
+
+        iInspectorRollerConveyer inspRollConv = new InspectorRollerConveyer(IDGenerator.getID(), "Mueller", "10.10.1990", false);
+            tempPin = r.nextInt(9999);
+            tempCard = getCardWithPinType( cardReader, IDGenerator.getLastID(), cardValidUntil, CardType.staff, ProfileType.O,tempPin);
+            inspRollConv.giveCard(tempCard);
+            inspRollConv.giveCardPin(tempPin);
+
+        iSupervisor supervisor = new Supervisor(IDGenerator.getID(), "Mueller", "10.10.1990", false, true);
+            tempPin = r.nextInt(9999);
+            tempCard = getCardWithPinType( cardReader, IDGenerator.getLastID(), cardValidUntil, CardType.staff, ProfileType.O,tempPin);
+            supervisor.giveCard(tempCard);
+            supervisor.giveCardPin(tempPin);
+
+        FederalPoliceOfficeRegis federalPoliceOfficeRegis = new FederalPoliceOfficeRegis();
+        iFederalPoliceOfficer fedOfficer = new FederalPoliceOfficer(IDGenerator.getID(), "Mueller", "10.10.1990", "PolizeiPraesedent",federalPoliceOfficeRegis);
+        tempPin = r.nextInt(9999);
+        tempCard = getCardWithPinType( cardReader, IDGenerator.getLastID(), cardValidUntil, CardType.external, ProfileType.O,tempPin);
+        fedOfficer.giveCard(tempCard);
+        fedOfficer.giveCardPin(tempPin);
+        federalPoliceOfficeRegis.addFederalPoliceOfficer((FederalPoliceOfficer) fedOfficer);
+
+        iTechnician techWorker = new Technician(IDGenerator.getID(), "Mueller", "10.10.1990");
+            tempPin = r.nextInt(9999);
+            tempCard = getCardWithPinType( cardReader, IDGenerator.getLastID(), cardValidUntil, CardType.external, ProfileType.O,tempPin);
+            techWorker.giveCard(tempCard);
+            techWorker.giveCardPin(tempPin);
+
+
+
         PlasticTray plasticTray = new PlasticTray();
 
         inspManCtrl.setAssignedMPC(BS1.getManualPostControl());
@@ -43,11 +85,6 @@ public class Application {
         supervisor.setAssignedWorkplaceSupervision(BS1.getWorkplaceSupervision());
         fedOfficer.setAssignedBaggageScanner(BS1);
         BS1.setFederalPoliceOfficer((FederalPoliceOfficer) fedOfficer);
-
-
-
-
-
 
 
         Map<Integer, Passenger> passengers = new HashMap<>();
@@ -73,7 +110,7 @@ public class Application {
         System.out.println("so far so good");
 
 
-        System.out.println("first 50 baggage glyphs:\n\t"+testBag.getLayer(4).getContent().substring(0, 50));
+        System.out.println("first 50 baggage glyphs:\n\t" + testBag.getLayer(4).getContent().substring(0, 50));
         //scanner.registerInspectorManualContr(inspManCtrl);
         //read passanger data -> 2 Maps:
         //map id - passagierObject
@@ -98,10 +135,11 @@ public class Application {
             try {
                 String baggage_filePath = "data/hand_baggage_" + bagID + ".txt";
                 String[] baggage_content = fRead.readFileToString(baggage_filePath);
-                HandBaggage bag = new HandBaggage(baggage_content[0], passenger, bagIDs[i]);
+                HandBaggage bag = new HandBaggage(baggage_content[0], passenger, bagID);
                 passenger.addHandBaggage(bag);
             } catch (IOException e) {
-                e.printStackTrace();
+                System.out.println("Baggage not found, id:'"+bagID+"'");
+                //e.printStackTrace();
             }
         }
 
@@ -185,11 +223,21 @@ public class Application {
         }
     }
 
+    private static IIDCard getCardWithPinType(ICardReader cardReader, int id, String validUntil, CardType cardType, ProfileType profile, int pin) {
+        IIDCard newCard = new IDCard(IDGenerator.getLastID(), validUntil, cardType);
+        cardReader.writeTypePin(newCard, profile, pin);
+        return newCard;
+    }
+
     static class IDGenerator {
         static int id = 0;
 
         static int getID() {
             return id++;
+        }
+
+        static int getLastID() {
+            return id;
         }
     }
 
