@@ -19,18 +19,18 @@ public class Application {
         String keyAES = "Hallo Welt";
 
         // Festlegung dea Algorithmus zur such nach verboten Gegenstaende
-        Configuration config  = Configuration.KnuthMorrisPratt;
+        Configuration config = Configuration.KnuthMorrisPratt;
 
-        iInspectorManualPostControl inspManCtrl= new InspectorManualPostControl(IDGenerator.getID(), "Mueller", "10.10.1990",false);
-        iInspectorOperatingStation inspOpStation = new InspectorOperationStation(IDGenerator.getID(), "Mueller", "10.10.1990",false);
-        iInspectorRollerConveyer inspRollConv = new InspectorRollerConveyer(IDGenerator.getID(), "Mueller", "10.10.1990",false);
-        iSupervisor supervisor = new Supervisor(IDGenerator.getID(), "Mueller", "10.10.1990",false, true);
+        iInspectorManualPostControl inspManCtrl = new InspectorManualPostControl(IDGenerator.getID(), "Mueller", "10.10.1990", false);
+        iInspectorOperatingStation inspOpStation = new InspectorOperationStation(IDGenerator.getID(), "Mueller", "10.10.1990", false);
+        iInspectorRollerConveyer inspRollConv = new InspectorRollerConveyer(IDGenerator.getID(), "Mueller", "10.10.1990", false);
+        iSupervisor supervisor = new Supervisor(IDGenerator.getID(), "Mueller", "10.10.1990", false, true);
         iFederalPoliceOfficer fedOfficer = new FederalPoliceOfficer(IDGenerator.getID(), "Mueller", "10.10.1990");
         iTechnician techWorker = new Technician(IDGenerator.getID(), "Mueller", "10.10.1990");
 
         // Gepäkscännner legt seiene Objekte an
         BaggageScanner BS1 = new BaggageScanner();
-        PlasticTray plasticTray=new PlasticTray();
+        PlasticTray plasticTray = new PlasticTray();
 
         inspManCtrl.setAssignedMPC(BS1.getManualPostControl());
         inspOpStation.setAssignedOS(BS1.getOperatingStation());
@@ -61,7 +61,7 @@ public class Application {
         System.out.println("so far so good");
 
 
-        System.out.println(testBag.getLayer(4).getContent().substring(0,50));
+        System.out.println(testBag.getLayer(4).getContent().substring(0, 50));
         //scanner.registerInspectorManualContr(inspManCtrl);
         //read passanger data -> 2 Maps:
         //map id - passagierObject
@@ -81,13 +81,13 @@ public class Application {
 
     private static void initPassengerBaggage(Passenger passenger) {
         int[] bagIDs = passenger.getBaggageIDs();
-        for (int i=0;i<bagIDs.length;i++){
+        for (int i = 0; i < bagIDs.length; i++) {
             IFileReader fRead = new BaggageScannerFileReader();
             try {
-                String baggage_filePath = "data/hand_baggage_"+bagIDs[i]+".txt";
+                String baggage_filePath = "data/hand_baggage_" + bagIDs[i] + ".txt";
                 String[] baggage_content = fRead.readFileToString(baggage_filePath);
-                    HandBaggage bag = new HandBaggage(baggage_content[0]);
-                    passenger.addHandBaggage(bag);
+                HandBaggage bag = new HandBaggage(baggage_content[0]);
+                passenger.addHandBaggage(bag);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -147,15 +147,14 @@ public class Application {
         try {
             String[] passengerStrings = fRead.readFileToString("data/passenger.txt");
             // id,name,gender,birthdate,address,passport_id
-            for (String passengerString: passengerStrings)
-            {
+            for (String passengerString : passengerStrings) {
                 if (passengerString.contains("//")) continue;
 
                 passSubStrs = passengerString.split(",");
-                if(passSubStrs.length!=8){
+                if (passSubStrs.length != 8) {
                     String id = "??";
-                    if (passSubStrs.length>0) id=passSubStrs[0];
-                    System.out.println("Faulty passenger data found at ID '"+id+"', discarding");
+                    if (passSubStrs.length > 0) id = passSubStrs[0];
+                    System.out.println("Faulty passenger data found at ID '" + id + "', discarding");
                     continue;
                 }
                 passID = Integer.parseInt(passSubStrs[0]);
@@ -176,7 +175,8 @@ public class Application {
 
     static class IDGenerator {
         static int id = 0;
-        static int getID(){
+
+        static int getID() {
             return id++;
         }
     }
