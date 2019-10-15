@@ -9,7 +9,7 @@ public class RollerConveyer implements  IBaggageScannerStation{
         //baggageScanner.setRollerConveyer(this);
     }
 
-    public BaggageScanner getBaggageScanner(){
+    public IBaggageScanner getBaggageScanner(){
         return baggageScanner;
     }
     public void MoveTrayToConveyerBelt(){

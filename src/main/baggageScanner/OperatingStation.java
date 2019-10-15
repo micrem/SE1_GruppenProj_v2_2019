@@ -6,13 +6,13 @@ import idCard.*;
 
 public class OperatingStation implements IOperatingStation, IBaggageScannerStation {
 
-    private BaggageScanner baggageScanner;
+    private IBaggageScanner baggageScanner;
     private PlasticTray plasticTray;
     private ICardReader cardReader;
 
     private boolean operatorLoggedIn = false;
 
-    public OperatingStation(BaggageScanner baggageScanner, String keyAES) {
+    public OperatingStation(IBaggageScanner baggageScanner, String keyAES) {
         this.baggageScanner = baggageScanner;
         cardReader = new CardReader(keyAES);
         //baggageScanner.setOperatingStation(this);
@@ -71,7 +71,7 @@ public class OperatingStation implements IOperatingStation, IBaggageScannerStati
     }
 
     @Override
-    public BaggageScanner getBaggageScanner() {
+    public IBaggageScanner getBaggageScanner() {
         return baggageScanner;
     }
 

@@ -11,7 +11,7 @@ public class ManualPostControl implements  IBaggageScannerStation{
     }
 
     @Override
-    public BaggageScanner getBaggageScanner(){
+    public IBaggageScanner getBaggageScanner(){
         return baggageScanner;
     }
 

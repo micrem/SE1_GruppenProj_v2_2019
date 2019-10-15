@@ -1,7 +1,7 @@
 package baggageScanner;
 
 public interface IBaggageScannerStation {
-    BaggageScanner getBaggageScanner();
+    IBaggageScanner getBaggageScanner();
     PlasticTray removePlasticTray();
     PlasticTray getPlasticTray();
     void putPlasticTray(PlasticTray plasticTray);
