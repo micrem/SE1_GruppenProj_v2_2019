@@ -16,15 +16,10 @@ public class Application {
 
     public static void main(String[] args) {
 
-        String AESkey = "Hallo Welt";
+        String keyAES = "Hallo Welt";
 
-        //hallosad
         // Festlegung dea Algorithmus zur such nach verboten Gegenstaende
         Configuration config  = Configuration.KnuthMorrisPratt;
-
-
-
-
 
         iInspectorManualPostControl inspManCtrl= new InspectorManualPostControl(IDGenerator.getID(), "Mueller", "10.10.1990",false);
         iInspectorOperatingStation inspOpStation = new InspectorOperationStation(IDGenerator.getID(), "Mueller", "10.10.1990",false);
@@ -53,11 +48,7 @@ public class Application {
         HandBaggage testBag = passengers.get(1).getBaggageByIndex(0);
         plasticTray.setHandbaggage(testBag);
 
-
-
-
         inspOpStation.LogIn();//hier IDKarte Logik
-
 
         //START OF SECURITY
         passengers.get(1).putBaggageInPlasticTray(BS1, testBag, plasticTray);
