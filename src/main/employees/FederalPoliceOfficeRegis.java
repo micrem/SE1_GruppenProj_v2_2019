@@ -20,6 +20,10 @@ public class FederalPoliceOfficeRegis {
         federalPoliceOfficersList.add(federalPoliceOfficer);
     }
 
+    public ArrayList<FederalPoliceOfficer> getFederalPoliceOfficersList() {
+        return federalPoliceOfficersList;
+    }
+
     public Roboter[] getRoboter() {
         return roboter;
     }

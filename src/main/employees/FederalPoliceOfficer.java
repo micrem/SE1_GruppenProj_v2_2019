@@ -14,6 +14,11 @@ public class FederalPoliceOfficer extends Employee implements iFederalPoliceOffi
         this.federalPoliceOfficeRegis = federalPoliceOfficeRegis;
         federalPoliceOfficeRegis.addFederalPoliceOfficer(this);
     }
+
+    public BaggageScanner getAssignedBaggageScanner() {
+        return assignedBaggageScanner;
+    }
+
     @Override
     public void ConfiscateGun(){}
     @Override
@@ -26,6 +31,8 @@ public class FederalPoliceOfficer extends Employee implements iFederalPoliceOffi
         federalPoliceOfficeRegis.getRoboter()[0].destroyBaggage();
 
     }
+
+
 
 
 }

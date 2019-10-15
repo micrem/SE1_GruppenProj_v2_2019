@@ -93,7 +93,7 @@ public class Application {
             try {
                 String baggage_filePath = "data/hand_baggage_" + bagIDs[i] + ".txt";
                 String[] baggage_content = fRead.readFileToString(baggage_filePath);
-                HandBaggage bag = new HandBaggage(baggage_content[0]);
+                HandBaggage bag = new HandBaggage(baggage_content[0], passenger, bagIDs[i]);
                 passenger.addHandBaggage(bag);
             } catch (IOException e) {
                 e.printStackTrace();
