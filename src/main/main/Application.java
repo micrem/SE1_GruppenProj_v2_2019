@@ -25,7 +25,9 @@ public class Application {
         iInspectorOperatingStation inspOpStation = new InspectorOperationStation(IDGenerator.getID(), "Mueller", "10.10.1990", false);
         iInspectorRollerConveyer inspRollConv = new InspectorRollerConveyer(IDGenerator.getID(), "Mueller", "10.10.1990", false);
         iSupervisor supervisor = new Supervisor(IDGenerator.getID(), "Mueller", "10.10.1990", false, true);
-        iFederalPoliceOfficer fedOfficer = new FederalPoliceOfficer(IDGenerator.getID(), "Mueller", "10.10.1990");
+        FederalPoliceOfficeRegis federalPoliceOfficeRegis = new FederalPoliceOfficeRegis();
+        iFederalPoliceOfficer fedOfficer = new FederalPoliceOfficer(IDGenerator.getID(), "Mueller", "10.10.1990", "PolizeiPraesedent");
+        federalPoliceOfficeRegis.addFederalPoliceOfficer((FederalPoliceOfficer) fedOfficer);
         iTechnician techWorker = new Technician(IDGenerator.getID(), "Mueller", "10.10.1990");
 
         // Gepäkscännner legt seiene Objekte an
@@ -35,9 +37,12 @@ public class Application {
         inspManCtrl.setAssignedMPC(BS1.getManualPostControl());
         inspOpStation.setAssignedOS(BS1.getOperatingStation());
         inspRollConv.setRC(BS1.getRollerConveyer());
-
         supervisor.setAssignedWorkplaceSupervision(BS1.getWorkplaceSupervision());
         fedOfficer.setAssignedBaggageScanner(BS1);
+        BS1.setFederalPoliceOfficer((FederalPoliceOfficer) fedOfficer);
+
+
+
 
         Map<Integer, Passenger> passengers = new HashMap<>();
 

@@ -1,5 +1,7 @@
 package baggageScanner;
 
+import employees.FederalPoliceOfficer;
+
 public class BaggageScanner implements IBaggageScanner {
     private StatusBaggageScanner status;
     private ProhibitedItems prohibitedItems;
@@ -11,6 +13,7 @@ public class BaggageScanner implements IBaggageScanner {
     private OperatingStation operatingStation;
     private ManualPostControl manualPostControl;
     private WorkplaceSupervision workplaceSupervision;
+    private FederalPoliceOfficer federalPoliceOfficer;
 
 
 
@@ -46,6 +49,15 @@ public class BaggageScanner implements IBaggageScanner {
 
     public WorkplaceSupervision getWorkplaceSupervision() {
         return workplaceSupervision;
+    }
+
+    public void setFederalPoliceOfficer(FederalPoliceOfficer federalPoliceOfficer){
+        this.federalPoliceOfficer=federalPoliceOfficer;
+
+    }
+
+    public FederalPoliceOfficer getFederalPoliceOfficer(){
+        return federalPoliceOfficer;
     }
 
     /*    public void setRollerConveyer(RollerConveyer rollerConveyer){

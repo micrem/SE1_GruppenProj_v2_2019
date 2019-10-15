@@ -40,8 +40,8 @@ public class Passenger {
     public void setBaggageIDs(int[] baggageIDs) {
         int numOfBags = 0;
         //create array to fit all non-null baggageIDs
-        for (int bagID : baggageIDs
-        ) {
+        for (int bagID : baggageIDs)
+        {
             if (bagID != 0) numOfBags++;
         }
         this.baggageIDs = new int[numOfBags <= MAXBAGGAGE ? numOfBags : MAXBAGGAGE];
