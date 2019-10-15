@@ -17,7 +17,10 @@ public class InspectorManualPostControl extends Inspector implements iInspectorM
     }
     @Override
     public void NeutralizeExplosive(){
-        //neutralisiert Sprengstoff
+
+
+        // wenn Wüschtest erfolgreich ist --> Gepäck zerstören
+        assignedMPC.getBaggageScanner().getFederalPoliceOfficer().federalPoliceOfficeRegis.getRoboter()[0].destroyBaggage();
     }
     @Override
     public void PushBack(){

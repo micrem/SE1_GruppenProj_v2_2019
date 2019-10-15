@@ -74,6 +74,14 @@ public class Passenger {
 
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getPassport_id() {
+        return passport_id;
+    }
+
     public HandBaggage getBaggageByIndex(int i) {
         if (i<baggage.length){
             return baggage[i];

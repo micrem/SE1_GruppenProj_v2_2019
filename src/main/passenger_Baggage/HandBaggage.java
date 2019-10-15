@@ -8,8 +8,12 @@ public class HandBaggage {
 
     private String baggageText;
     private String layerText;
+    private Passenger passenger;
+    private int bagID;
 
-    public HandBaggage(String baggageText){
+    public HandBaggage(String baggageText, Passenger passenger, int bagID){
+        this.passenger = passenger;
+        this.bagID = bagID;
         int layerSize = Layer.layerSize;
         this.baggageText = baggageText;
         layers = new Layer[5];
@@ -26,5 +30,17 @@ public class HandBaggage {
             return layers[index];
         } else
             return null;
-        }
+    }
+
+    public String getBaggageText() {
+        return baggageText;
+    }
+
+    public Passenger getPassenger() {
+        return passenger;
+    }
+
+    public int getBagID() {
+        return bagID;
+    }
 }

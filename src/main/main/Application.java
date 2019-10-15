@@ -30,8 +30,7 @@ public class Application {
         iInspectorRollerConveyer inspRollConv = new InspectorRollerConveyer(IDGenerator.getID(), "Mueller", "10.10.1990", false);
         iSupervisor supervisor = new Supervisor(IDGenerator.getID(), "Mueller", "10.10.1990", false, true);
         FederalPoliceOfficeRegis federalPoliceOfficeRegis = new FederalPoliceOfficeRegis();
-        iFederalPoliceOfficer fedOfficer = new FederalPoliceOfficer(IDGenerator.getID(), "Mueller", "10.10.1990", "PolizeiPraesedent");
-        federalPoliceOfficeRegis.addFederalPoliceOfficer((FederalPoliceOfficer) fedOfficer);
+        iFederalPoliceOfficer fedOfficer = new FederalPoliceOfficer(IDGenerator.getID(), "Mueller", "10.10.1990", "PolizeiPraesedent", federalPoliceOfficeRegis);
         iTechnician techWorker = new Technician(IDGenerator.getID(), "Mueller", "10.10.1990");
 
         // Gepäkscännner legt seiene Objekte an
@@ -44,6 +43,9 @@ public class Application {
         supervisor.setAssignedWorkplaceSupervision(BS1.getWorkplaceSupervision());
         fedOfficer.setAssignedBaggageScanner(BS1);
         BS1.setFederalPoliceOfficer((FederalPoliceOfficer) fedOfficer);
+
+
+
 
 
 
@@ -96,7 +98,7 @@ public class Application {
             try {
                 String baggage_filePath = "data/hand_baggage_" + bagID + ".txt";
                 String[] baggage_content = fRead.readFileToString(baggage_filePath);
-                HandBaggage bag = new HandBaggage(baggage_content[0]);
+                HandBaggage bag = new HandBaggage(baggage_content[0], passenger, bagIDs[i]);
                 passenger.addHandBaggage(bag);
             } catch (IOException e) {
                 e.printStackTrace();

@@ -7,11 +7,18 @@ public class FederalPoliceOfficer extends Employee implements iFederalPoliceOffi
     BaggageScanner assignedBaggageScanner;
     String grade;
     FederalPoliceOfficeRegis federalPoliceOfficeRegis;
-    public FederalPoliceOfficer(int pid, String pname, String pbirthDate, String grade)
+    public FederalPoliceOfficer(int pid, String pname, String pbirthDate, String grade, FederalPoliceOfficeRegis federalPoliceOfficeRegis)
     {
         super(pid, pname, pbirthDate);
         this.grade= grade;
+        this.federalPoliceOfficeRegis = federalPoliceOfficeRegis;
+        federalPoliceOfficeRegis.addFederalPoliceOfficer(this);
     }
+
+    public BaggageScanner getAssignedBaggageScanner() {
+        return assignedBaggageScanner;
+    }
+
     @Override
     public void ConfiscateGun(){}
     @Override
@@ -19,9 +26,14 @@ public class FederalPoliceOfficer extends Employee implements iFederalPoliceOffi
         assignedBaggageScanner=passignedBaggageScanner;
     }
 
-    public void setFederalPoliceOfficeRegis(FederalPoliceOfficeRegis federalPoliceOfficeRegis){
-        this.federalPoliceOfficeRegis = federalPoliceOfficeRegis;
+    @Override
+    public void roboterDestroyBaggage() {
+        federalPoliceOfficeRegis.getRoboter()[0].destroyBaggage();
+
     }
+
+
+
 
 }
 
