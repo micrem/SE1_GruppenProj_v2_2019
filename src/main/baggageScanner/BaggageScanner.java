@@ -17,12 +17,12 @@ public class BaggageScanner implements IBaggageScanner {
 
 
 
-    public BaggageScanner (){
+    public BaggageScanner (String keyAES){
         this.status = StatusBaggageScanner.shutdown;
         trayStation = new Tray(this);
         rollerConveyer = new RollerConveyer(this);
         beltStation = new Belt(this);
-        operatingStation = new OperatingStation(this);
+        operatingStation = new OperatingStation(this, keyAES);
         manualPostControl = new ManualPostControl(this);
         workplaceSupervision = new WorkplaceSupervision(this);
     }
