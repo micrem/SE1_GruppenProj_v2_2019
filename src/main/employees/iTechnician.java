@@ -1,4 +1,4 @@
 package employees;
 
-public interface iTechnician {
+public interface iTechnician extends IEmployee{
 }

@@ -3,7 +3,7 @@ package employees;
 import baggageScanner.OperatingStation;
 import baggageScanner.PlasticTray;
 
-public interface iInspectorOperatingStation {
+public interface iInspectorOperatingStation extends IEmployee{
     void LogIn();
     void CheckLuggage(PlasticTray plasticTray);
     void PushButtonRight();

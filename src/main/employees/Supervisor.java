@@ -2,10 +2,7 @@ package employees;
 
 
 import baggageScanner.WorkplaceSupervision;
-import cardReader.CardReader;
 import idCard.*;
-
-import java.util.Date;
 
 public class Supervisor extends Employee implements iSupervisor{
     private boolean isSenior;
@@ -28,5 +25,5 @@ public class Supervisor extends Employee implements iSupervisor{
     @Override
     public void BePresentByGunConfiscation(){}
     @Override
-    public void UnlockDeviceInLockedStatus(){};
+    public void UnlockDeviceInLockedStatus(){}
 }

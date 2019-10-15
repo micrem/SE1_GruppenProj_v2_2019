@@ -2,7 +2,7 @@ package employees;
 
 import baggageScanner.ManualPostControl;
 
-public interface iInspectorManualPostControl {
+public interface iInspectorManualPostControl extends IEmployee{
     void ConfiscateKnife();
     void NeutralizeExplosive();
     void PushBack();

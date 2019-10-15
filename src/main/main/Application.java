@@ -2,7 +2,11 @@ package main;
 
 import baggageScanner.BaggageScanner;
 import baggageScanner.PlasticTray;
+import cardReader.*;
 import employees.*;
+import idCard.CardType;
+import idCard.IDCard;
+import idCard.IIDCard;
 import passenger_Baggage.Gender;
 import passenger_Baggage.HandBaggage;
 import passenger_Baggage.Passenger;
@@ -14,9 +18,9 @@ import java.util.*;
 
 public class Application {
 
-    public static void main(String[] args) {
+    private static final String keyAES = "Hallo Welt";
 
-        String keyAES = "Hallo Welt";
+    public static void main(String[] args) {
 
         // Festlegung dea Algorithmus zur such nach verboten Gegenstaende
         Configuration config = Configuration.KnuthMorrisPratt;
@@ -46,11 +50,12 @@ public class Application {
 
         Map<Integer, Passenger> passengers = new HashMap<>();
 
+
         initPassengers(passengers);
         initAssignments(passengers);
         initPassengerBaggage(passengers.get(1));
-
         HandBaggage testBag = passengers.get(1).getBaggageByIndex(0);
+
         plasticTray.setHandbaggage(testBag);
 
         inspOpStation.LogIn();//hier IDKarte Logik
@@ -66,7 +71,7 @@ public class Application {
         System.out.println("so far so good");
 
 
-        System.out.println(testBag.getLayer(4).getContent().substring(0, 50));
+        System.out.println("first 50 baggage glyphs:\n\t"+testBag.getLayer(4).getContent().substring(0, 50));
         //scanner.registerInspectorManualContr(inspManCtrl);
         //read passanger data -> 2 Maps:
         //map id - passagierObject
@@ -86,10 +91,10 @@ public class Application {
 
     private static void initPassengerBaggage(Passenger passenger) {
         int[] bagIDs = passenger.getBaggageIDs();
-        for (int i = 0; i < bagIDs.length; i++) {
+        for (int bagID : bagIDs) {
             IFileReader fRead = new BaggageScannerFileReader();
             try {
-                String baggage_filePath = "data/hand_baggage_" + bagIDs[i] + ".txt";
+                String baggage_filePath = "data/hand_baggage_" + bagID + ".txt";
                 String[] baggage_content = fRead.readFileToString(baggage_filePath);
                 HandBaggage bag = new HandBaggage(baggage_content[0]);
                 passenger.addHandBaggage(bag);
