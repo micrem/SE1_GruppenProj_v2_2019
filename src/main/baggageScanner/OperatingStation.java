@@ -1,12 +1,23 @@
 package baggageScanner;
 
+import cardReader.CardReader;
+import cardReader.ICardReader;
+
 public class OperatingStation implements  IOperatingStation, IBaggageScannerStation{
 
     private BaggageScanner baggageScanner;
     private PlasticTray plasticTray;
-    public OperatingStation(BaggageScanner baggageScanner){
+    private ICardReader cardReader;
+
+    public OperatingStation(BaggageScanner baggageScanner, String keyAES){
         this.baggageScanner = baggageScanner;
+        cardReader = new CardReader(keyAES);
         //baggageScanner.setOperatingStation(this);
+    }
+
+    @Override
+    public ICardReader getCardReader() {
+        return cardReader;
     }
 
     @Override
