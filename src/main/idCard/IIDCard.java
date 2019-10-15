@@ -1,6 +1,8 @@
 package idCard;
 
 public interface IIDCard {
+
+
     void writeStripe(String content);
 
     String readStripe();

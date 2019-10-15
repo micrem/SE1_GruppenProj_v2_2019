@@ -1,7 +1,7 @@
 package cardReader;
 
 import cryptography.AES;
-import idCard.IIDCard;
+import idCard.*;
 
 public class CardReader implements ICardReader {
 
@@ -22,6 +22,7 @@ public class CardReader implements ICardReader {
         insertedCard = card;
         correctPinEntered = false;
         pinAttempts = 0;
+        extractCardData();
     }
 
     @Override
@@ -69,17 +70,17 @@ public class CardReader implements ICardReader {
         return profileType;
     }
 
-    private void decodeCardData() {
+    private void extractCardData() {
         String stripeEncrypted = insertedCard.readStripe();
         String stripeDecrypted = AES.decrypt(stripeEncrypted, keyAES);
-        if (stripeDecrypted == null || stripeDecrypted.length() < 11) {
+        if (stripeDecrypted == null || stripeDecrypted.length() < 14) {
             System.out.println("Card stripe data invalid, locking card.");
             insertedCard.lockCard();
             return;
         }
         try {
             this.cardPin = Integer.parseInt(stripeDecrypted.substring(7, 11));
-            this.profileType = ProfileType.valueOf(stripeDecrypted.substring(4, 5));
+            this.profileType = ProfileType.valueOf(stripeDecrypted.substring(3, 4));
         } catch (IllegalArgumentException e) {
             System.out.println("Card stripe data invalid, locking card.");
             insertedCard.lockCard();
@@ -87,12 +88,13 @@ public class CardReader implements ICardReader {
     }
 
     @Override
-    public void writeTypePin(ProfileType type, int pin) {
-        if (hasCard() && !isCardLocked() ){
+    public void writeTypePin(IIDCard idCard, ProfileType type, int pin) {
+        if (idCard.readStripe()==null) {
             String unencryptedString = generateStringTypePin(type, pin);
             String encryptedString = AES.encrypt(unencryptedString, keyAES);
-            insertedCard.writeStripe(encryptedString);
-        }
+            idCard.writeStripe(encryptedString);
+        } else
+            System.out.println("Can not write to card: card stripe not empty.");
     }
 
     String generateStringTypePin(ProfileType type, int pin){

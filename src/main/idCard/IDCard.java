@@ -1,5 +1,9 @@
 package idCard;
 
+import cardReader.CardReader;
+import cardReader.ICardReader;
+import cardReader.ProfileType;
+
 public class IDCard implements IIDCard {
 
     IStripe magnetStripe;
@@ -49,6 +53,21 @@ public class IDCard implements IIDCard {
     @Override
     public void lockCard() {
         isLocked = true;
+    }
+
+    public static void main(String[] args) {
+
+        IIDCard idCard = new IDCard(1,"1.1.3000", CardType.staff);
+
+        ICardReader cardReader = new CardReader("magicKey123!$");
+        cardReader.writeTypePin(idCard, ProfileType.I,4321);
+        cardReader.insertCard(idCard);
+        System.out.println("pin:1234 correct:"+cardReader.enterPin(1234));
+        System.out.println("pin:4321 correct:"+cardReader.enterPin(4321));
+        System.out.println("CardType:"+cardReader.getProfileType());
+        System.out.println("cardread is card locked="+cardReader.isCardLocked());
+        cardReader.ejectCard();
+        System.out.println("cardReader has card:"+cardReader.hasCard());
     }
 
 }
