@@ -86,4 +86,20 @@ public class CardReader implements ICardReader {
         }
     }
 
+    @Override
+    public void writeTypePin(ProfileType type, int pin) {
+        if (hasCard() && !isCardLocked() ){
+            String unencryptedString = generateStringTypePin(type, pin);
+            String encryptedString = AES.encrypt(unencryptedString, keyAES);
+            insertedCard.writeStripe(encryptedString);
+        }
+    }
+
+    String generateStringTypePin(ProfileType type, int pin){
+        if(pin<0) pin*=-1;
+        while(pin>=10000) pin = pin/10;
+        String pinStr = String.format("%04d", pin);
+        return "***"+type.toString()+"***" + pinStr +"***";
+    }
+
 }
