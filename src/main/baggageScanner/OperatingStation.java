@@ -1,19 +1,35 @@
 package baggageScanner;
 
 import cardReader.*;
-import employees.IEmployee;
+import configuration.Configuration;
+import employees.iInspectorOperatingStation;
 import idCard.*;
+import string_matching.*;
 
 public class OperatingStation implements IOperatingStation, IBaggageScannerStation {
 
     private IBaggageScanner baggageScanner;
     private PlasticTray plasticTray;
     private ICardReader cardReader;
+    private Configuration config;
+    private IStringMatching string_matcher;
+    private iInspectorOperatingStation inspector;
 
     private boolean operatorLoggedIn = false;
 
-    public OperatingStation(IBaggageScanner baggageScanner, String keyAES) {
+    public OperatingStation(IBaggageScanner baggageScanner, String keyAES, Configuration config) {
         this.baggageScanner = baggageScanner;
+        this.config = config;
+        switch (config){
+            case KnuthMorrisPratt:
+                string_matcher = new KnuthMorrisPratt();
+                break;
+            case BoyerMoore:
+                string_matcher = new BoyerMoore();
+                break;
+            default:
+                string_matcher = new BruteForce();
+        }
         cardReader = new CardReader(keyAES);
         //baggageScanner.setOperatingStation(this);
     }
@@ -30,7 +46,19 @@ public class OperatingStation implements IOperatingStation, IBaggageScannerStati
 
     @Override
     public void buttonRechteck() {
-
+        String content;
+        int position;
+        if(getBaggageScanner().scan()==false) return;
+        if (plasticTray==null || plasticTray.getHandbaggage()==null) return;
+        for (int i = 0; i < 5; i++) {
+            content = plasticTray.getHandbaggage().getLayer(i).getContent();
+            position = string_matcher.search(content, ProhibitedItems.explosive.getItemString()) ;
+            if (position!=-1) {
+                System.out.println("Scanenr found explosives at:"+position+" in layer:"+i);
+                inspector.discoverExplosive(position, i);
+                return;
+            }
+        }
     }
 
     @Override
@@ -39,7 +67,7 @@ public class OperatingStation implements IOperatingStation, IBaggageScannerStati
     }
 
     @Override
-    public boolean logInOperator(IEmployee employee) {
+    public boolean logInOperator(iInspectorOperatingStation employee) {
         boolean enteredCorrectPin = false;
         ICardReader cardReader = this.getCardReader();
         employee.insertCardIntoReader(cardReader);

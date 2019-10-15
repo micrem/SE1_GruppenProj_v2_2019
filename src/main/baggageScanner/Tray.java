@@ -2,12 +2,17 @@ package baggageScanner;
 
 public class Tray implements IBaggageScannerStation{
     //plasticTray station
-    private BaggageScanner baggageScanner;
+    private IBaggageScanner baggageScanner;
     private PlasticTray plasticTray;
 
     @Override
     public PlasticTray getPlasticTray() {
         return plasticTray;
+    }
+
+    @Override
+    public IBaggageScanner getBaggageScanner() {
+        return baggageScanner;
     }
 
     @Override
@@ -24,7 +29,7 @@ public class Tray implements IBaggageScannerStation{
         this.plasticTray = pplasticTray;
     }
 
-    public Tray(BaggageScanner baggageScanner){
+    public Tray(IBaggageScanner baggageScanner){
         this.baggageScanner = baggageScanner;
     }
 }

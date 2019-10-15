@@ -1,10 +1,10 @@
 package baggageScanner;
 
 public class WorkplaceSupervision implements IBaggageScannerStation{
-    private BaggageScanner baggageScanner;
+    private IBaggageScanner baggageScanner;
     private PlasticTray plasticTray;
 
-    public  WorkplaceSupervision(BaggageScanner baggageScanner){
+    public  WorkplaceSupervision(IBaggageScanner baggageScanner){
         this.baggageScanner = baggageScanner;
         //baggageScanner.setWorkplaceSupervision(this);
     }
@@ -12,6 +12,11 @@ public class WorkplaceSupervision implements IBaggageScannerStation{
     @Override
     public PlasticTray getPlasticTray() {
         return plasticTray;
+    }
+
+    @Override
+    public IBaggageScanner getBaggageScanner() {
+        return baggageScanner;
     }
 
     @Override

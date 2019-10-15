@@ -1,6 +1,5 @@
 package employees;
 
-import baggageScanner.IBaggageScanner;
 import baggageScanner.OperatingStation;
 import baggageScanner.PlasticTray;
 
@@ -11,7 +10,7 @@ public interface iInspectorOperatingStation extends IEmployee{
     void PushButtonSquare();
     void DiscoverKnife();
     void DiscoverGun();
-    void DiscoverExplosive();
+    void discoverExplosive(int position, int layerID);
     void PushButtonLeft();
     void setAssignedOS(OperatingStation passignedOS);
 }

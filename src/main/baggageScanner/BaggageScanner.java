@@ -1,5 +1,6 @@
 package baggageScanner;
 
+import configuration.Configuration;
 import employees.FederalPoliceOfficer;
 
 public class BaggageScanner implements IBaggageScanner {
@@ -17,12 +18,12 @@ public class BaggageScanner implements IBaggageScanner {
 
 
 
-    public BaggageScanner (String keyAES){
+    public BaggageScanner (String keyAES, Configuration config){
         this.status = StatusBaggageScanner.shutdown;
         trayStation = new Tray(this);
         rollerConveyer = new RollerConveyer(this);
         beltStation = new Belt(this);
-        operatingStation = new OperatingStation(this, keyAES);
+        operatingStation = new OperatingStation(this, keyAES, config);
         manualPostControl = new ManualPostControl(this);
         workplaceSupervision = new WorkplaceSupervision(this);
     }
@@ -110,8 +111,12 @@ public class BaggageScanner implements IBaggageScanner {
     }
 
     @Override
-    public void scan() {
-
+    public boolean scan() {
+        if (status==StatusBaggageScanner.activated){
+            status = StatusBaggageScanner.inUse;
+            return true;
+        }
+        return false;
     }
 
     @Override

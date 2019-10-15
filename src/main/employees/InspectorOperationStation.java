@@ -1,7 +1,6 @@
 package employees;
 
 import baggageScanner.*;
-import cardReader.ICardReader;
 
 
 public class InspectorOperationStation extends Inspector implements iInspectorOperatingStation{
@@ -21,7 +20,7 @@ public class InspectorOperationStation extends Inspector implements iInspectorOp
             DiscoverGun();}
         else if(true/*expl*/){
             pushAlarmButton();
-            DiscoverExplosive();}
+            discoverExplosive(0, 0);}
         else
             //fuck yeah
         ;
@@ -54,7 +53,7 @@ public class InspectorOperationStation extends Inspector implements iInspectorOp
         System.out.println("Waffe an der {0} Stelle gefunden, Alarm!");
     }
     @Override
-    public void DiscoverExplosive(){
+    public void discoverExplosive(int position, int layerID){
         System.out.println("Sprengstoff an der {0} Stelle gefunden, Alarm!");
     }
     @Override

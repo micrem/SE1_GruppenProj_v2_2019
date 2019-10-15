@@ -1,10 +1,10 @@
 package baggageScanner;
 
 public class Belt implements IBaggageScannerStation{
-    private BaggageScanner baggageScanner;
+    private IBaggageScanner baggageScanner;
     private PlasticTray plasticTray;
 
-    public Belt(BaggageScanner baggageScanner){
+    public Belt(IBaggageScanner baggageScanner){
         this.baggageScanner = baggageScanner;
         //baggageScanner.setBelt(this);
 
@@ -15,6 +15,11 @@ public class Belt implements IBaggageScannerStation{
     public PlasticTray getPlasticTray() {
 
         return plasticTray;
+    }
+
+    @Override
+    public IBaggageScanner getBaggageScanner() {
+        return baggageScanner;
     }
 
     @Override

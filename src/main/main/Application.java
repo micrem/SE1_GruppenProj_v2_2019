@@ -30,7 +30,7 @@ public class Application {
         Configuration config = Configuration.KnuthMorrisPratt;
 
         // Gepäkscännner legt seiene Objekte an
-        BaggageScanner BS1 = new BaggageScanner(keyAES);
+        BaggageScanner BS1 = new BaggageScanner(keyAES, config);
 
         String cardValidUntil = "2.2.2222";
         IIDCard tempCard;

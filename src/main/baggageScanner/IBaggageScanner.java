@@ -5,7 +5,7 @@ import employees.FederalPoliceOfficer;
 public interface IBaggageScanner {
     void moveBeltForward();
     void moveBeltBackward();
-    void scan();
+    boolean scan();
     void alarm();
     void report();
     void maintenance();
