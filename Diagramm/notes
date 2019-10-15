@@ -1,0 +1,5 @@
+add ability to write magnetstrips/cards
+
+add card creation to employees/ individual classes?
+add setPinProfile to cardReader? (how to protect method from abuse? add separate cardWriter?)
+add getCard() to employees
