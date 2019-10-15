@@ -66,8 +66,13 @@ public class CardReader implements ICardReader {
     }
 
     @Override
-    public ProfileType getProfileType() {
+    public ProfileType getCardProfileType() {
         return profileType;
+    }
+
+    @Override
+    public CardType getCardType() {
+        return insertedCard.getType();
     }
 
     private void extractCardData() {

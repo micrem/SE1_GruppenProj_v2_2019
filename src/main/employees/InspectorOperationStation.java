@@ -1,8 +1,7 @@
 package employees;
 
-import baggageScanner.OperatingStation;
-import baggageScanner.PlasticTray;
-import baggageScanner.Tray;
+import baggageScanner.*;
+import cardReader.ICardReader;
 
 
 public class InspectorOperationStation extends Inspector implements iInspectorOperatingStation{
@@ -29,8 +28,12 @@ public class InspectorOperationStation extends Inspector implements iInspectorOp
     }
 
     @Override
-    public void LogIn(){
+    public boolean LogIn(){
+        if (this.assignedOS==null){ return false;}
+        assignedOS.logInOperator(this);
+
         System.out.println("Inspector has logged in successfully."); //spaeter ueberschreiben mit methoden aus cardreader
+        return true;
     }
     @Override
     public void PushButtonRight(){

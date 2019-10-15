@@ -64,7 +64,7 @@ public class IDCard implements IIDCard {
         cardReader.insertCard(idCard);
         System.out.println("pin:1234 correct:"+cardReader.enterPin(1234));
         System.out.println("pin:4321 correct:"+cardReader.enterPin(4321));
-        System.out.println("CardType:"+cardReader.getProfileType());
+        System.out.println("CardType:"+cardReader.getCardProfileType());
         System.out.println("cardread is card locked="+cardReader.isCardLocked());
         cardReader.ejectCard();
         System.out.println("cardReader has card:"+cardReader.hasCard());

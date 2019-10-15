@@ -64,6 +64,13 @@ public class BaggageScanner implements IBaggageScanner {
     }
 
     @Override
+    public void inspectorOperationsLoggedIn() {
+        if (status == StatusBaggageScanner.shutdown) {
+            status = StatusBaggageScanner.activated;
+        }
+    }
+
+    @Override
     public FederalPoliceOfficer getFederalPoliceOfficer(){
         return federalPoliceOfficer;
     }

@@ -29,4 +29,6 @@ public interface IBaggageScanner {
     void setFederalPoliceOfficer(FederalPoliceOfficer federalPoliceOfficer);
 
     FederalPoliceOfficer getFederalPoliceOfficer();
+
+    void inspectorOperationsLoggedIn();
 }

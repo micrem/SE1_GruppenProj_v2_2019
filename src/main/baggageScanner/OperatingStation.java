@@ -1,15 +1,18 @@
 package baggageScanner;
 
-import cardReader.CardReader;
-import cardReader.ICardReader;
+import cardReader.*;
+import employees.IEmployee;
+import idCard.*;
 
-public class OperatingStation implements  IOperatingStation, IBaggageScannerStation{
+public class OperatingStation implements IOperatingStation, IBaggageScannerStation {
 
     private BaggageScanner baggageScanner;
     private PlasticTray plasticTray;
     private ICardReader cardReader;
 
-    public OperatingStation(BaggageScanner baggageScanner, String keyAES){
+    private boolean operatorLoggedIn = false;
+
+    public OperatingStation(BaggageScanner baggageScanner, String keyAES) {
         this.baggageScanner = baggageScanner;
         cardReader = new CardReader(keyAES);
         //baggageScanner.setOperatingStation(this);
@@ -34,7 +37,41 @@ public class OperatingStation implements  IOperatingStation, IBaggageScannerStat
     public void buttonLeft() {
 
     }
-    public BaggageScanner getBaggageScanner(){
+
+    @Override
+    public boolean logInOperator(IEmployee employee) {
+        boolean enteredCorrectPin = false;
+        ICardReader cardReader = this.getCardReader();
+        employee.insertCardIntoReader(cardReader);
+
+        if (       cardReader.getCardType() != CardType.staff
+                || cardReader.isCardLocked()
+                || cardReader.getCardProfileType() != ProfileType.I) {
+            employee.giveCard(cardReader.ejectCard());
+            return false;
+        }
+
+        while (!enteredCorrectPin) {
+            enteredCorrectPin = employee.enterPin(cardReader);
+            if (cardReader.isCardLocked()) {
+                employee.giveCard(cardReader.ejectCard());
+                return false;
+            }
+        }
+
+        employee.giveCard(cardReader.ejectCard());
+
+        if (enteredCorrectPin){
+            operatorLoggedIn = true;
+            this.getBaggageScanner().inspectorOperationsLoggedIn();
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public BaggageScanner getBaggageScanner() {
         return baggageScanner;
     }
 
@@ -52,7 +89,7 @@ public class OperatingStation implements  IOperatingStation, IBaggageScannerStat
 
     @Override
     public void putPlasticTray(PlasticTray plasticTray) {
-        this.plasticTray =plasticTray;
+        this.plasticTray = plasticTray;
 
     }
 }

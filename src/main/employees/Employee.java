@@ -1,5 +1,6 @@
 package employees;
 
+import cardReader.ICardReader;
 import idCard.IIDCard;
 
 public abstract class Employee implements IEmployee{
@@ -32,5 +33,17 @@ public abstract class Employee implements IEmployee{
     @Override
     public void giveCardPin(int cardPin){
         this.cardPin = cardPin;
+    }
+
+    @Override
+    public boolean enterPin(ICardReader cardReader) {
+        return cardReader.enterPin(cardPin);
+    }
+
+    @Override
+    public IIDCard insertCardIntoReader(ICardReader cardReader) {
+        IIDCard tempCard = card;
+        card = null;
+        return tempCard;
     }
 }

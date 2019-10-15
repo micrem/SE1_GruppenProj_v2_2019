@@ -14,7 +14,9 @@ public interface ICardReader {
 
     boolean isCardLocked();
 
-    ProfileType getProfileType();
+    ProfileType getCardProfileType();
+
+    CardType getCardType();
 
     void writeTypePin(IIDCard card, ProfileType type, int pin);
 

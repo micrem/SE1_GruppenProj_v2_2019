@@ -1,6 +1,8 @@
 package baggageScanner;
 
 import cardReader.ICardReader;
+import employees.IEmployee;
+import employees.InspectorOperationStation;
 
 public interface IOperatingStation {
     ICardReader getCardReader();
@@ -8,5 +10,5 @@ public interface IOperatingStation {
     void buttonRechteck();
     void buttonLeft();
 
-
+    boolean logInOperator(IEmployee employee);
 }

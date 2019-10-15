@@ -9,6 +9,8 @@ public class ManualPostControl implements  IBaggageScannerStation{
         this.baggageScanner= baggageScanner;
         //baggageScanner.setManualPostControl(this);
     }
+
+    @Override
     public BaggageScanner getBaggageScanner(){
         return baggageScanner;
     }
@@ -23,7 +25,6 @@ public class ManualPostControl implements  IBaggageScannerStation{
         PlasticTray tempBaggage = this.plasticTray;
         this.plasticTray = null;
         return tempBaggage;
-
     }
 
     @Override

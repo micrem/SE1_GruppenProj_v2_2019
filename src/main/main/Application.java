@@ -92,7 +92,12 @@ public class Application {
 
         initPassengers(passengers);
         initAssignments(passengers);
-        initPassengerBaggage(passengers.get(1));
+        //System.out.println("Start reading baggage:"+LocalTime.now());
+        for (Passenger passenger : passengers.values()
+             ) {
+            initPassengerBaggage(passenger);
+        }
+        //System.out.println("End reading baggage:"+LocalTime.now());
         HandBaggage testBag = passengers.get(1).getBaggageByIndex(0);
 
         plasticTray.setHandbaggage(testBag);
