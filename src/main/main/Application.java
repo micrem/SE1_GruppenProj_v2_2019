@@ -26,8 +26,7 @@ public class Application {
         iInspectorRollerConveyer inspRollConv = new InspectorRollerConveyer(IDGenerator.getID(), "Mueller", "10.10.1990", false);
         iSupervisor supervisor = new Supervisor(IDGenerator.getID(), "Mueller", "10.10.1990", false, true);
         FederalPoliceOfficeRegis federalPoliceOfficeRegis = new FederalPoliceOfficeRegis();
-        iFederalPoliceOfficer fedOfficer = new FederalPoliceOfficer(IDGenerator.getID(), "Mueller", "10.10.1990", "PolizeiPraesedent");
-        federalPoliceOfficeRegis.addFederalPoliceOfficer((FederalPoliceOfficer) fedOfficer);
+        iFederalPoliceOfficer fedOfficer = new FederalPoliceOfficer(IDGenerator.getID(), "Mueller", "10.10.1990", "PolizeiPraesedent", federalPoliceOfficeRegis);
         iTechnician techWorker = new Technician(IDGenerator.getID(), "Mueller", "10.10.1990");
 
         // Gepäkscännner legt seiene Objekte an
@@ -40,6 +39,9 @@ public class Application {
         supervisor.setAssignedWorkplaceSupervision(BS1.getWorkplaceSupervision());
         fedOfficer.setAssignedBaggageScanner(BS1);
         BS1.setFederalPoliceOfficer((FederalPoliceOfficer) fedOfficer);
+
+
+
 
 
 
