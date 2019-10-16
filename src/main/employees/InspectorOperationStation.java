@@ -42,6 +42,7 @@ public class InspectorOperationStation extends Inspector implements iInspectorOp
         assignedOS.putPlasticTray(assignedOS.getBaggageScanner().getBelt().getPlasticTray());
         }else{
             System.out.println("Error 301: Scanner not in active mode.");
+            System.out.println("Error 301.1: Device in " + assignedOS.getBaggageScanner().getStatusBaggerScanner()+" mode.");
         }
     }
     @Override
@@ -52,6 +53,7 @@ public class InspectorOperationStation extends Inspector implements iInspectorOp
         }
         else{
             System.out.println("Error 301: Scanner not in active mode.");
+            System.out.println("Error 301.1: Device in " + assignedOS.getBaggageScanner().getStatusBaggerScanner()+" mode.");
         }
     }
     @Override
