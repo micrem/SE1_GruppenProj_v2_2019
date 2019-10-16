@@ -104,7 +104,7 @@ public class OperatingStation implements IOperatingStation, IBaggageScannerStati
     }
 
     @Override
-    public PlasticTray getPlasticTray() {
+    public PlasticTray peekPlasticTray() {
         return plasticTray;
     }
 

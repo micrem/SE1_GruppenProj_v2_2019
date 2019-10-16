@@ -75,6 +75,16 @@ public class CardReader implements ICardReader {
         return insertedCard.getType();
     }
 
+    @Override
+    public void writeTypePin(IIDCard idCard, ProfileType type, int pin) {
+        if (idCard.readStripe()==null) {
+            String unencryptedString = generateStringTypePin(type, pin);
+            String encryptedString = AES.encrypt(unencryptedString, keyAES);
+            idCard.writeStripe(encryptedString);
+        } else
+            System.out.println("Can not write to card: card stripe not empty.");
+    }
+
     private void extractCardData() {
         String stripeEncrypted = insertedCard.readStripe();
         String stripeDecrypted = AES.decrypt(stripeEncrypted, keyAES);
@@ -90,16 +100,6 @@ public class CardReader implements ICardReader {
             System.out.println("Card stripe data invalid, locking card.");
             insertedCard.lockCard();
         }
-    }
-
-    @Override
-    public void writeTypePin(IIDCard idCard, ProfileType type, int pin) {
-        if (idCard.readStripe()==null) {
-            String unencryptedString = generateStringTypePin(type, pin);
-            String encryptedString = AES.encrypt(unencryptedString, keyAES);
-            idCard.writeStripe(encryptedString);
-        } else
-            System.out.println("Can not write to card: card stripe not empty.");
     }
 
     String generateStringTypePin(ProfileType type, int pin){

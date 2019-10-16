@@ -13,7 +13,7 @@ public class Roboter {
 
     public void destroyBaggage(){
         // Handgepäck vom Tray Lösen
-        HandBaggage tempHandB= federalPoliceOfficeRegis.getFederalPoliceOfficersList().get(0).getAssignedBaggageScanner().getManualPostControl().getPlasticTray().takeHandbaggage();
+        HandBaggage tempHandB= federalPoliceOfficeRegis.getFederalPoliceOfficersList().get(0).getAssignedBaggageScanner().getManualPostControl().peekPlasticTray().takeHandbaggage();
         String textHandBaggage =tempHandB.getBaggageText();
         String[] textHandBaggageFragment = new String[499];
         for (int i = 0; i <500 ; i++) {

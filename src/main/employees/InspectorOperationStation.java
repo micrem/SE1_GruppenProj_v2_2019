@@ -11,6 +11,7 @@ public class InspectorOperationStation extends Inspector implements iInspectorOp
     }
     @Override
     public void setAssignedOS(OperatingStation passignedOS){assignedOS=passignedOS;}
+
     @Override
     public void CheckLuggage(PlasticTray plasticTray){
         if(assignedOS.getBaggageScanner().getStatusBaggerScanner()==StatusBaggageScanner.inUse){
@@ -38,8 +39,9 @@ public class InspectorOperationStation extends Inspector implements iInspectorOp
     }
     @Override
     public void PushButtonRight(){
+        //TODO: Status-Logik sollte im jeweiligen Objekt (im BaggageScanner) sein, das entscheidet intern wie es auf eingaben reagiert
         if(assignedOS.getBaggageScanner().getStatusBaggerScanner()==StatusBaggageScanner.activated){
-        assignedOS.putPlasticTray(assignedOS.getBaggageScanner().getBelt().getPlasticTray());
+        assignedOS.putPlasticTray(assignedOS.getBaggageScanner().getBelt().peekPlasticTray());
         }else{
             System.out.println("Error 301: Scanner not in active mode.");
             System.out.println("Error 301.1: Device in " + assignedOS.getBaggageScanner().getStatusBaggerScanner()+" mode.");
@@ -49,7 +51,7 @@ public class InspectorOperationStation extends Inspector implements iInspectorOp
     public void PushButtonSquare(){
         if(assignedOS.getBaggageScanner().getStatusBaggerScanner()==StatusBaggageScanner.activated){
             assignedOS.getBaggageScanner().setStatusScanner(StatusBaggageScanner.inUse);
-            CheckLuggage(assignedOS.getPlasticTray());
+            CheckLuggage(assignedOS.peekPlasticTray());
         }
         else{
             System.out.println("Error 301: Scanner not in active mode.");
@@ -65,6 +67,7 @@ public class InspectorOperationStation extends Inspector implements iInspectorOp
     public void DiscoverGun(){
         System.out.println("Waffe an der {0} Stelle gefunden, Alarm!");
     }
+
     @Override
     public void discoverExplosive(int position, int layerID){
         System.out.println("Sprengstoff an der {0} Stelle gefunden, Alarm!");

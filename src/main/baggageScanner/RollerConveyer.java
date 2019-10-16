@@ -17,7 +17,7 @@ public class RollerConveyer implements  IBaggageScannerStation{
     }
 
     @Override
-    public PlasticTray getPlasticTray() {
+    public PlasticTray peekPlasticTray() {
         return plasticTray;
     }
 

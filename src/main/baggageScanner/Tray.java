@@ -6,7 +6,7 @@ public class Tray implements IBaggageScannerStation{
     private PlasticTray plasticTray;
 
     @Override
-    public PlasticTray getPlasticTray() {
+    public PlasticTray peekPlasticTray() {
         return plasticTray;
     }
 

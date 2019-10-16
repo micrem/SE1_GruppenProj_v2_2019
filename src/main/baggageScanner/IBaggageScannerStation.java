@@ -3,6 +3,6 @@ package baggageScanner;
 public interface IBaggageScannerStation {
     IBaggageScanner getBaggageScanner();
     PlasticTray removePlasticTray();
-    PlasticTray getPlasticTray();
+    PlasticTray peekPlasticTray();
     void putPlasticTray(PlasticTray plasticTray);
 }
