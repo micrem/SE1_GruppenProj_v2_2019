@@ -31,5 +31,6 @@ public class Tray implements IBaggageScannerStation{
 
     public Tray(IBaggageScanner baggageScanner){
         this.baggageScanner = baggageScanner;
+        plasticTray=new PlasticTray();
     }
 }

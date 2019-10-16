@@ -31,6 +31,5 @@ public class RollerConveyer implements  IBaggageScannerStation{
     @Override
     public void putPlasticTray(PlasticTray plasticTray) {
         this.plasticTray = plasticTray;
-
     }
 }

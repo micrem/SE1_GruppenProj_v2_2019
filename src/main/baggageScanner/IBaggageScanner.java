@@ -14,6 +14,7 @@ public interface IBaggageScanner {
     StatusBaggageScanner getStatusBaggerScanner();
     void alarmButtonPushed();
 
+
     Tray getTray();
 
     RollerConveyer getRollerConveyer();

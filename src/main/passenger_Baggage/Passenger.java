@@ -4,9 +4,7 @@ package passenger_Baggage;
 // id,name,gender,birthdate,address,passport_id
 //1,Nicole Stewart,female,30.09.1988,39 Green Lane,Bath,BA14 6VW,R29IVXGBE
 
-import baggageScanner.BaggageScanner;
-import baggageScanner.PlasticTray;
-import baggageScanner.RollerConveyer;
+import baggageScanner.*;
 
 public class Passenger {
 
@@ -20,6 +18,7 @@ public class Passenger {
     private String city;
     private String plz;
     private String passport_id;
+    private PlasticTray myPlasticTray;
 
     private HandBaggage[] baggage;
 
@@ -88,11 +87,16 @@ public class Passenger {
         }
         return null;
     }
-    public void putBaggageInPlasticTray(BaggageScanner baggageScanner, HandBaggage baggage, PlasticTray plasticTray){
-        plasticTray.setHandbaggage(baggage);
-        baggageScanner.getTray().putPlasticTray(plasticTray);
+    public void putBaggageInPlasticTray(IBaggageScanner baggageScanner, int baggageIndex){
+        if(getBaggageByIndex(baggageIndex)==null)
+        {return;}
+        myPlasticTray= baggageScanner.getTray().removePlasticTray();
+        myPlasticTray.setHandbaggage(baggage[baggageIndex]);
     }
-    public void putPlasticTrayOnRollerConveyer(RollerConveyer rollerConveyer, PlasticTray plasticTray){
-        rollerConveyer.putPlasticTray(rollerConveyer.getBaggageScanner().getTray().removePlasticTray());
+    public void putPlasticTrayOnRollerConveyer(IBaggageScanner scanner){
+        if(myPlasticTray==null)
+            return;
+        scanner.getRollerConveyer().putPlasticTray(myPlasticTray);
+        myPlasticTray=null;
     }
 }

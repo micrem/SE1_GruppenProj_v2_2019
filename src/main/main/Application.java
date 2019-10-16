@@ -93,8 +93,7 @@ public class Application {
         initPassengers(passengers);
         initAssignments(passengers);
         //System.out.println("Start reading baggage:"+LocalTime.now());
-        for (Passenger passenger : passengers.values()
-             ) {
+        for (Passenger passenger : passengers.values()) {
             initPassengerBaggage(passenger);
         }
         //System.out.println("End reading baggage:"+LocalTime.now());
@@ -105,14 +104,14 @@ public class Application {
         inspOpStation.LogIn();//hier IDKarte Logik
 
         //START OF SECURITY
-        passengers.get(1).putBaggageInPlasticTray(BS1, testBag, plasticTray);
-        passengers.get(1).putPlasticTrayOnRollerConveyer(BS1.getRollerConveyer(), plasticTray);
+        passengers.get(1).putBaggageInPlasticTray(BS1, 0);
+        passengers.get(1).putPlasticTrayOnRollerConveyer(BS1);
 
         inspRollConv.PushTray();
 
         inspOpStation.PushButtonRight();
         inspOpStation.PushButtonSquare();
-        System.out.println("so far so good");
+
 
 
         System.out.println("first 50 baggage glyphs:\n\t" + testBag.getLayer(4).getContent().substring(0, 50));
