@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class FederalPoliceOfficeRegis {
     private PoliceOfficeRegis profilTyp;
-    private ArrayList<FederalPoliceOfficer> federalPoliceOfficersList;
+    private ArrayList<iFederalPoliceOfficer> federalPoliceOfficersList;
     private Roboter[] roboter = new Roboter[3];
 
     public FederalPoliceOfficeRegis() {
@@ -16,11 +16,11 @@ public class FederalPoliceOfficeRegis {
 
     }
 
-    public void addFederalPoliceOfficer(FederalPoliceOfficer federalPoliceOfficer){
+    public void addFederalPoliceOfficer(iFederalPoliceOfficer federalPoliceOfficer){
         federalPoliceOfficersList.add(federalPoliceOfficer);
     }
 
-    public ArrayList<FederalPoliceOfficer> getFederalPoliceOfficersList() {
+    public ArrayList<iFederalPoliceOfficer> getFederalPoliceOfficersList() {
         return federalPoliceOfficersList;
     }
 

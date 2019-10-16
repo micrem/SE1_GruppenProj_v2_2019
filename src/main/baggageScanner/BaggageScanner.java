@@ -1,7 +1,7 @@
 package baggageScanner;
 
 import configuration.Configuration;
-import employees.FederalPoliceOfficer;
+import employees.*;
 
 public class BaggageScanner implements IBaggageScanner {
     private StatusBaggageScanner status;
@@ -14,7 +14,7 @@ public class BaggageScanner implements IBaggageScanner {
     private OperatingStation operatingStation;
     private ManualPostControl manualPostControl;
     private WorkplaceSupervision workplaceSupervision;
-    private FederalPoliceOfficer federalPoliceOfficer;
+    private iFederalPoliceOfficer federalPoliceOfficer;
 
 
 
@@ -59,7 +59,7 @@ public class BaggageScanner implements IBaggageScanner {
     }
 
     @Override
-    public void setFederalPoliceOfficer(FederalPoliceOfficer federalPoliceOfficer){
+    public void setFederalPoliceOfficer(iFederalPoliceOfficer federalPoliceOfficer){
         this.federalPoliceOfficer=federalPoliceOfficer;
 
     }
@@ -72,7 +72,7 @@ public class BaggageScanner implements IBaggageScanner {
     }
 
     @Override
-    public FederalPoliceOfficer getFederalPoliceOfficer(){
+    public iFederalPoliceOfficer getFederalPoliceOfficer(){
         return federalPoliceOfficer;
     }
 
