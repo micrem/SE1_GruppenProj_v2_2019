@@ -67,7 +67,7 @@ public class Application {
         tempCard = getCardWithPinType( cardReader, IDGenerator.getLastID(), cardValidUntil, CardType.external, ProfileType.O,tempPin);
         fedOfficer.giveCard(tempCard);
         fedOfficer.giveCardPin(tempPin);
-        federalPoliceOfficeRegis.addFederalPoliceOfficer((FederalPoliceOfficer) fedOfficer);
+        federalPoliceOfficeRegis.addFederalPoliceOfficer(fedOfficer);
 
         iTechnician techWorker = new Technician(IDGenerator.getID(), "Mueller", "10.10.1990");
             tempPin = r.nextInt(9999);
@@ -84,7 +84,7 @@ public class Application {
         inspRollConv.setRC(BS1.getRollerConveyer());
         supervisor.setAssignedWorkplaceSupervision(BS1.getWorkplaceSupervision());
         fedOfficer.setAssignedBaggageScanner(BS1);
-        BS1.setFederalPoliceOfficer((FederalPoliceOfficer) fedOfficer);
+        BS1.setFederalPoliceOfficer(fedOfficer);
 
 
         Map<Integer, Passenger> passengers = new HashMap<>();

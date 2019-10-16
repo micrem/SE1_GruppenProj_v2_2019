@@ -1,6 +1,6 @@
 package baggageScanner;
 
-import employees.FederalPoliceOfficer;
+import employees.*;
 
 public interface IBaggageScanner {
     void moveBeltForward();
@@ -26,9 +26,9 @@ public interface IBaggageScanner {
 
     WorkplaceSupervision getWorkplaceSupervision();
 
-    void setFederalPoliceOfficer(FederalPoliceOfficer federalPoliceOfficer);
+    void setFederalPoliceOfficer(iFederalPoliceOfficer federalPoliceOfficer);
 
-    FederalPoliceOfficer getFederalPoliceOfficer();
+    iFederalPoliceOfficer getFederalPoliceOfficer();
 
     void inspectorOperationsLoggedIn();
 }
