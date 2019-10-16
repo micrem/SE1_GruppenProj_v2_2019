@@ -1,6 +1,7 @@
 package employees;
 
 import baggageScanner.*;
+import baggageScanner.StatusBaggageScanner;
 
 
 public class InspectorOperationStation extends Inspector implements iInspectorOperatingStation{
@@ -12,18 +13,19 @@ public class InspectorOperationStation extends Inspector implements iInspectorOp
     public void setAssignedOS(OperatingStation passignedOS){assignedOS=passignedOS;}
     @Override
     public void CheckLuggage(PlasticTray plasticTray){
-        //Methodeeeeeee
-        if(true/*messer*/)
-            DiscoverKnife();
-        else if(true/*waffe*/){
-            pushAlarmButton();
-            DiscoverGun();}
-        else if(true/*expl*/){
-            pushAlarmButton();
-            discoverExplosive(0, 0);}
-        else
+        if(assignedOS.getBaggageScanner().getStatusBaggerScanner()==StatusBaggageScanner.inUse){
+            if(true/*messer*/)
+                DiscoverKnife();
+            else if(true/*waffe*/){
+                pushAlarmButton();
+                DiscoverGun();}
+            else if(true/*expl*/){
+                pushAlarmButton();
+                discoverExplosive(0, 0);}
+            else
             //fuck yeah
-        ;
+            ;
+        }
     }
 
     @Override
@@ -36,12 +38,21 @@ public class InspectorOperationStation extends Inspector implements iInspectorOp
     }
     @Override
     public void PushButtonRight(){
+        if(assignedOS.getBaggageScanner().getStatusBaggerScanner()==StatusBaggageScanner.activated){
         assignedOS.putPlasticTray(assignedOS.getBaggageScanner().getBelt().getPlasticTray());
+        }else{
+            System.out.println("Error 301: Scanner not in active mode.");
+        }
     }
     @Override
     public void PushButtonSquare(){
-        //Methode this.CheckBaggage(Tray tray);
-        CheckLuggage(assignedOS.getPlasticTray());
+        if(assignedOS.getBaggageScanner().getStatusBaggerScanner()==StatusBaggageScanner.activated){
+            assignedOS.getBaggageScanner().setStatusScanner(StatusBaggageScanner.inUse);
+            CheckLuggage(assignedOS.getPlasticTray());
+        }
+        else{
+            System.out.println("Error 301: Scanner not in active mode.");
+        }
     }
     @Override
     public void DiscoverKnife(){

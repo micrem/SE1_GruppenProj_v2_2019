@@ -1,5 +1,6 @@
 package employees;
 
+import baggageScanner.StatusBaggageScanner;
 import baggageScanner.RollerConveyer;
 
 public class InspectorRollerConveyer extends Inspector implements iInspectorRollerConveyer {
@@ -16,6 +17,10 @@ public class InspectorRollerConveyer extends Inspector implements iInspectorRoll
 
     @Override
     public void PushTray() {
-        assignedConveyer.getBaggageScanner().getBelt().putPlasticTray(assignedConveyer.removePlasticTray());
+        if(assignedConveyer.getBaggageScanner().getStatusBaggerScanner()==StatusBaggageScanner.activated){
+        assignedConveyer.getBaggageScanner().getBelt().putPlasticTray(assignedConveyer.removePlasticTray());}
+        else{
+            System.out.println("Error 301: Scanner not in active mode.");
+        }
     }
 }
