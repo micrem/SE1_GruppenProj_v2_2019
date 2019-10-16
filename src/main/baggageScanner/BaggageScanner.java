@@ -18,6 +18,8 @@ public class BaggageScanner implements IBaggageScanner {
 
 
 
+
+
     public BaggageScanner (String keyAES, Configuration config){
         this.status = StatusBaggageScanner.shutdown;
         trayStation = new Tray(this);
@@ -139,16 +141,10 @@ public class BaggageScanner implements IBaggageScanner {
         //todo: add on/off logic, change state
     }
 
-    //TODO: NOOOOOOOOOOOOO
-    @Override
-    public void setStatusScanner(StatusBaggageScanner newStatus) {
-         this.status=newStatus;
-    }
-
     @Override
     public void alarmButtonPushed(){
          if(this.status==StatusBaggageScanner.inUse)
-            setStatusScanner(StatusBaggageScanner.locked);
+            status = StatusBaggageScanner.locked;
          else
              System.out.println("Error: Scanner aktuell nicht im inUse-Modus");
     }
