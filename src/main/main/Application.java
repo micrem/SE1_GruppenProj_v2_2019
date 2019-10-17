@@ -92,7 +92,7 @@ public class Application {
 
         initPassengers(passengers);
         initAssignments(passengers);
-        //System.out.println("Start reading baggage:"+LocalTime.now());
+        //System.out.println("Start reading baggage:"+LocalTime.now()); 17:38
         for (Passenger passenger : passengers.values()) {
             initPassengerBaggage(passenger);
         }
@@ -101,7 +101,7 @@ public class Application {
 
         plasticTray.setHandbaggage(testBag);
 
-        inspOpStation.LogIn();//hier IDKarte Logik
+        inspOpStation.LogIn();//hier IDKarte Logik, gut gemacht
 
         //START OF SECURITY
         passengers.get(1).putBaggageInPlasticTray(BS1, 0);
