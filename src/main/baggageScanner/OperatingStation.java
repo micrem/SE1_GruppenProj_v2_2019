@@ -41,7 +41,10 @@ public class OperatingStation implements IOperatingStation, IBaggageScannerStati
 
     @Override
     public void buttonRight() {
-
+        if(baggageScanner.getStatusBaggerScanner()!=StatusBaggageScanner.activated){
+            return;
+        }
+        baggageScanner.getOperatingStation().putPlasticTray(baggageScanner.getBelt().removePlasticTray());
     }
 
     @Override

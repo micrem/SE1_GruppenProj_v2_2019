@@ -39,24 +39,11 @@ public class InspectorOperationStation extends Inspector implements iInspectorOp
     }
     @Override
     public void PushButtonRight(){
-        //TODO: Status-Logik sollte im jeweiligen Objekt (im BaggageScanner) sein, das entscheidet intern wie es auf eingaben reagiert
-        if(assignedOS.getBaggageScanner().getStatusBaggerScanner()==StatusBaggageScanner.activated){
-        assignedOS.putPlasticTray(assignedOS.getBaggageScanner().getBelt().peekPlasticTray());
-        }else{
-            System.out.println("Error 301: Scanner not in active mode.");
-            System.out.println("Error 301.1: Device in " + assignedOS.getBaggageScanner().getStatusBaggerScanner()+" mode.");
-        }
+        assignedOS.buttonRight();
     }
     @Override
     public void PushButtonSquare(){
-        if(assignedOS.getBaggageScanner().getStatusBaggerScanner()==StatusBaggageScanner.activated){
-            assignedOS.getBaggageScanner().setStatusScanner(StatusBaggageScanner.inUse);
-            CheckLuggage(assignedOS.peekPlasticTray());
-        }
-        else{
-            System.out.println("Error 301: Scanner not in active mode.");
-            System.out.println("Error 301.1: Device in " + assignedOS.getBaggageScanner().getStatusBaggerScanner()+" mode.");
-        }
+        assignedOS.buttonRechteck();
     }
     @Override
     public void DiscoverKnife(){

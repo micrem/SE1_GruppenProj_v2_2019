@@ -17,11 +17,8 @@ public class InspectorRollerConveyer extends Inspector implements iInspectorRoll
 
     @Override
     public void PushTray() {
-        if(assignedConveyer.getBaggageScanner().getStatusBaggerScanner()==StatusBaggageScanner.activated){
-        assignedConveyer.getBaggageScanner().getBelt().putPlasticTray(assignedConveyer.removePlasticTray());}
-        else{
-            System.out.println("Error 301: Scanner not in active mode.");
-            System.out.println("Error 301.1: Device in " + assignedConveyer.getBaggageScanner().getStatusBaggerScanner()+" mode.");
-        }
+        if(assignedConveyer.peekPlasticTray()==null)
+            return;
+        assignedConveyer.getBaggageScanner().getBelt().putPlasticTray(assignedConveyer.removePlasticTray());
     }
 }
