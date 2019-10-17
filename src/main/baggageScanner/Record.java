@@ -3,21 +3,17 @@ package baggageScanner;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import static baggageScanner.ProhibitedItems.knife;
-import static baggageScanner.ProhibitedItems.none;
-
 public class Record {
-    private int id;
+    static int id=0;
+
     private String timeStamp;
     private String result;
     private int position;
-    private int layerIndex;
-    ProhibitedItems a;
+    private int recordID;
 
-    public Record(int id, ProhibitedItems item, int position, int layerIndex) {
-        this.id = id;
+    public Record(int position, ProhibitedItems item) {
+        recordID = id++;
         this.position = position;
-        this.layerIndex = layerIndex;
 
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.mm.yyyy HH:mm:ss,SSS");
@@ -37,7 +33,7 @@ public class Record {
                 result = "explosive";
                 break;
         }
-        if (item==none){
+        if (item==ProhibitedItems.none){
             result = "clean";
         } else {
             result = "prohibited item | "+result+"detected at position "+position;
