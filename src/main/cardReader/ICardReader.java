@@ -16,7 +16,7 @@ public interface ICardReader {
 
     ProfileType getCardProfileType();
 
-    CardType getCardType();
+    IDCardType getCardType();
 
     void writeTypePin(IIDCard card, ProfileType type, int pin);
 

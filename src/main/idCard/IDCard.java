@@ -10,9 +10,9 @@ public class IDCard implements IIDCard {
     int id;
     String validUntil;
     boolean isLocked;
-    CardType type;
+    IDCardType type;
 
-    public IDCard( int id, String validUntil, CardType type) {
+    public IDCard( int id, String validUntil, IDCardType type) {
         this.id = id;
         this.validUntil = validUntil;
         this.isLocked = false;
@@ -41,7 +41,7 @@ public class IDCard implements IIDCard {
     }
 
     @Override
-    public CardType getType() {
+    public IDCardType getType() {
         return type;
     }
 
@@ -57,14 +57,14 @@ public class IDCard implements IIDCard {
 
     public static void main(String[] args) {
 
-        IIDCard idCard = new IDCard(1,"1.1.3000", CardType.staff);
+        IIDCard idCard = new IDCard(1,"1.1.3000", IDCardType.staff);
 
         ICardReader cardReader = new CardReader("magicKey123!$");
         cardReader.writeTypePin(idCard, ProfileType.I,4321);
         cardReader.insertCard(idCard);
         System.out.println("pin:1234 correct:"+cardReader.enterPin(1234));
         System.out.println("pin:4321 correct:"+cardReader.enterPin(4321));
-        System.out.println("CardType:"+cardReader.getCardProfileType());
+        System.out.println("IDCardType:"+cardReader.getCardProfileType());
         System.out.println("cardread is card locked="+cardReader.isCardLocked());
         cardReader.ejectCard();
         System.out.println("cardReader has card:"+cardReader.hasCard());

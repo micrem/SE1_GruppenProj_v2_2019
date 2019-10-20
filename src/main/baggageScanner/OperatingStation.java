@@ -79,7 +79,7 @@ public class OperatingStation implements IOperatingStation, IBaggageScannerStati
         ICardReader cardReader = this.getCardReader();
         employee.insertCardIntoReader(cardReader);
 
-        if (       cardReader.getCardType() != CardType.staff
+        if (       cardReader.getCardType() != IDCardType.staff
                 || cardReader.isCardLocked()
                 || cardReader.getCardProfileType() != ProfileType.I) {
             employee.giveCard(cardReader.ejectCard());

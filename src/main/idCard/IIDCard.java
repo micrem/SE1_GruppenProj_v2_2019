@@ -11,7 +11,7 @@ public interface IIDCard {
 
     String getValidUntilDate();
 
-    CardType getType();
+    IDCardType getType();
 
     boolean isLocked();
 

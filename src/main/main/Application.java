@@ -4,7 +4,7 @@ import baggageScanner.BaggageScanner;
 import baggageScanner.PlasticTray;
 import cardReader.*;
 import employees.*;
-import idCard.CardType;
+import idCard.IDCardType;
 import idCard.IDCard;
 import idCard.IIDCard;
 import passenger_Baggage.Gender;
@@ -38,39 +38,39 @@ public class Application {
 
         IInspectorManualPostControl inspManCtrl = new InspectorManualPostControl(IDGenerator.getID(), "Mueller", "10.10.1990", false);
             tempPin = r.nextInt(9999);
-            tempCard = getCardWithPinType( cardReader, IDGenerator.getLastID(), cardValidUntil, CardType.staff, ProfileType.O,tempPin);
+            tempCard = getCardWithPinType( cardReader, IDGenerator.getLastID(), cardValidUntil, IDCardType.staff, ProfileType.O,tempPin);
             inspManCtrl.giveCard(tempCard);
             inspManCtrl.giveCardPin(tempPin);
 
         IInspectorOperatingStation inspOpStation = new InspectorOperationStation(IDGenerator.getID(), "Mueller", "10.10.1990", false);
             tempPin = r.nextInt(9999);
-            tempCard = getCardWithPinType( cardReader, IDGenerator.getLastID(), cardValidUntil, CardType.staff, ProfileType.O,tempPin);
+            tempCard = getCardWithPinType( cardReader, IDGenerator.getLastID(), cardValidUntil, IDCardType.staff, ProfileType.O,tempPin);
             inspOpStation.giveCard(tempCard);
             inspOpStation.giveCardPin(tempPin);
 
         IInspectorRollerConveyer inspRollConv = new InspectorRollerConveyer(IDGenerator.getID(), "Mueller", "10.10.1990", false);
             tempPin = r.nextInt(9999);
-            tempCard = getCardWithPinType( cardReader, IDGenerator.getLastID(), cardValidUntil, CardType.staff, ProfileType.O,tempPin);
+            tempCard = getCardWithPinType( cardReader, IDGenerator.getLastID(), cardValidUntil, IDCardType.staff, ProfileType.O,tempPin);
             inspRollConv.giveCard(tempCard);
             inspRollConv.giveCardPin(tempPin);
 
         ISupervisor supervisor = new Supervisor(IDGenerator.getID(), "Mueller", "10.10.1990", false, true);
             tempPin = r.nextInt(9999);
-            tempCard = getCardWithPinType( cardReader, IDGenerator.getLastID(), cardValidUntil, CardType.staff, ProfileType.O,tempPin);
+            tempCard = getCardWithPinType( cardReader, IDGenerator.getLastID(), cardValidUntil, IDCardType.staff, ProfileType.O,tempPin);
             supervisor.giveCard(tempCard);
             supervisor.giveCardPin(tempPin);
 
         FederalPoliceOfficeRegis federalPoliceOfficeRegis = new FederalPoliceOfficeRegis();
         IFederalPoliceOfficer fedOfficer = new FederalPoliceOfficer(IDGenerator.getID(), "Mueller", "10.10.1990", "PolizeiPraesedent",federalPoliceOfficeRegis);
         tempPin = r.nextInt(9999);
-        tempCard = getCardWithPinType( cardReader, IDGenerator.getLastID(), cardValidUntil, CardType.external, ProfileType.O,tempPin);
+        tempCard = getCardWithPinType( cardReader, IDGenerator.getLastID(), cardValidUntil, IDCardType.external, ProfileType.O,tempPin);
         fedOfficer.giveCard(tempCard);
         fedOfficer.giveCardPin(tempPin);
         federalPoliceOfficeRegis.addFederalPoliceOfficer(fedOfficer);
 
         ITechnician techWorker = new Technician(IDGenerator.getID(), "Mueller", "10.10.1990");
             tempPin = r.nextInt(9999);
-            tempCard = getCardWithPinType( cardReader, IDGenerator.getLastID(), cardValidUntil, CardType.external, ProfileType.O,tempPin);
+            tempCard = getCardWithPinType( cardReader, IDGenerator.getLastID(), cardValidUntil, IDCardType.external, ProfileType.O,tempPin);
             techWorker.giveCard(tempCard);
             techWorker.giveCardPin(tempPin);
 
@@ -226,8 +226,8 @@ public class Application {
         }
     }
 
-    private static IIDCard getCardWithPinType(ICardReader cardReader, int id, String validUntil, CardType cardType, ProfileType profile, int pin) {
-        IIDCard newCard = new IDCard(IDGenerator.getLastID(), validUntil, cardType);
+    private static IIDCard getCardWithPinType(ICardReader cardReader, int id, String validUntil, IDCardType IDCardType, ProfileType profile, int pin) {
+        IIDCard newCard = new IDCard(IDGenerator.getLastID(), validUntil, IDCardType);
         cardReader.writeTypePin(newCard, profile, pin);
         return newCard;
     }

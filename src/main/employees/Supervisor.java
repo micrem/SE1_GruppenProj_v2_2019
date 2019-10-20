@@ -15,7 +15,7 @@ public class Supervisor extends Employee implements ISupervisor {
         isSenior=pisSenior;
         isExecutive=pisExecutive;
         String validUntil = "2.2.2222";
-        idCard = new IDCard(pid, validUntil, CardType.staff);
+        idCard = new IDCard(pid, validUntil, IDCardType.staff);
 
     }
     @Override

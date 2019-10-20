@@ -1,6 +1,6 @@
 package idCard;
 
-public enum CardType {
+public enum IDCardType {
     staff,
     external
 }

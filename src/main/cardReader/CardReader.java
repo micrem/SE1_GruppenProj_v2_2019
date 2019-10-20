@@ -71,7 +71,7 @@ public class CardReader implements ICardReader {
     }
 
     @Override
-    public CardType getCardType() {
+    public IDCardType getCardType() {
         return insertedCard.getType();
     }
 
