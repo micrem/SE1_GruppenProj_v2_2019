@@ -2,7 +2,7 @@ package employees;
 
 
 import baggageScanner.ManualPostControl;
-public class InspectorManualPostControl extends Inspector implements iInspectorManualPostControl {
+public class InspectorManualPostControl extends Inspector implements IInspectorManualPostControl {
     ManualPostControl assignedMPC;
 
     public InspectorManualPostControl(int pid, String pname, String pbirthDate, boolean pisSenior) {

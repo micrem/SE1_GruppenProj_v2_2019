@@ -2,7 +2,7 @@ package baggageScanner;
 
 import cardReader.*;
 import configuration.Configuration;
-import employees.iInspectorOperatingStation;
+import employees.IInspectorOperatingStation;
 import idCard.*;
 import string_matching.*;
 
@@ -13,7 +13,7 @@ public class OperatingStation implements IOperatingStation, IBaggageScannerStati
     private ICardReader cardReader;
     private Configuration config;
     private IStringMatching string_matcher;
-    private iInspectorOperatingStation inspector;
+    private IInspectorOperatingStation inspector;
 
     private boolean operatorLoggedIn = false;
 
@@ -44,33 +44,22 @@ public class OperatingStation implements IOperatingStation, IBaggageScannerStati
         if(baggageScanner.getStatusBaggerScanner()!=StatusBaggageScanner.activated){
             return;
         }
-        baggageScanner.getOperatingStation().putPlasticTray(baggageScanner.getBelt().removePlasticTray());
+        baggageScanner.getScannerDevice().buttonRightPushed();
     }
 
     @Override
-    public void buttonRechteck() {
-        String content;
-        int position;
-        if(getBaggageScanner().scan()==false) return;
-        if (plasticTray==null || plasticTray.getHandbaggage()==null) return;
-        for (int i = 0; i < 5; i++) {
-            content = plasticTray.getHandbaggage().getLayer(i).getContent();
-            position = string_matcher.search(content, ProhibitedItems.explosive.getItemString()) ;
-            if (position!=-1) {
-                System.out.println("Scanenr found explosives at:"+position+" in layer:"+i);
-                inspector.discoverExplosive(position, i);
-                return;
-            }
-        }
+    public void buttonSquare() {
+        baggageScanner.getScannerDevice().buttonSquarePushed(inspector, string_matcher);
     }
 
     @Override
     public void buttonLeft() {
-
+        if (plasticTray==null || plasticTray.getHandbaggage()==null) return;
+        baggageScanner.getScannerDevice().buttonLeftPushed();
     }
 
     @Override
-    public boolean logInOperator(iInspectorOperatingStation employee) {
+    public boolean logInOperator(IInspectorOperatingStation employee) {
         boolean enteredCorrectPin = false;
         ICardReader cardReader = this.getCardReader();
         employee.insertCardIntoReader(cardReader);

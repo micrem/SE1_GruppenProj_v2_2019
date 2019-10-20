@@ -33,9 +33,11 @@ public interface IBaggageScanner {
 
     WorkplaceSupervision getWorkplaceSupervision();
 
-    void setFederalPoliceOfficer(iFederalPoliceOfficer federalPoliceOfficer);
+    void setFederalPoliceOfficer(IFederalPoliceOfficer federalPoliceOfficer);
 
-    iFederalPoliceOfficer getFederalPoliceOfficer();
+    IFederalPoliceOfficer getFederalPoliceOfficer();
 
     void inspectorOperationsLoggedIn();
+
+    Scanner getScannerDevice();
 }

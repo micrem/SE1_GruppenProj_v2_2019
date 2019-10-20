@@ -14,13 +14,11 @@ public class BaggageScanner implements IBaggageScanner {
     private OperatingStation operatingStation;
     private ManualPostControl manualPostControl;
     private WorkplaceSupervision workplaceSupervision;
-    private iFederalPoliceOfficer federalPoliceOfficer;
+    private IFederalPoliceOfficer federalPoliceOfficer;
+    private Scanner scannerDevice;
 
 
-
-
-
-    public BaggageScanner (String keyAES, Configuration config){
+    public BaggageScanner(String keyAES, Configuration config) {
         this.status = StatusBaggageScanner.shutdown;
         trayStation = new Tray(this);
         rollerConveyer = new RollerConveyer(this);
@@ -28,10 +26,11 @@ public class BaggageScanner implements IBaggageScanner {
         operatingStation = new OperatingStation(this, keyAES, config);
         manualPostControl = new ManualPostControl(this);
         workplaceSupervision = new WorkplaceSupervision(this);
+        scannerDevice = new Scanner(this);
     }
 
     @Override
-    public Tray getTray(){
+    public Tray getTray() {
         return trayStation;
     }
 
@@ -50,6 +49,7 @@ public class BaggageScanner implements IBaggageScanner {
         return operatingStation;
     }
 
+
     @Override
     public ManualPostControl getManualPostControl() {
         return manualPostControl;
@@ -61,7 +61,7 @@ public class BaggageScanner implements IBaggageScanner {
     }
 
     @Override
-    public void setFederalPoliceOfficer(iFederalPoliceOfficer federalPoliceOfficer){
+    public void setFederalPoliceOfficer(IFederalPoliceOfficer federalPoliceOfficer){
         this.federalPoliceOfficer=federalPoliceOfficer;
 
     }
@@ -74,7 +74,7 @@ public class BaggageScanner implements IBaggageScanner {
     }
 
     @Override
-    public iFederalPoliceOfficer getFederalPoliceOfficer(){
+    public IFederalPoliceOfficer getFederalPoliceOfficer(){
         return federalPoliceOfficer;
     }
 
@@ -154,5 +154,8 @@ public class BaggageScanner implements IBaggageScanner {
         return this.status;
     }
 
-
+    @Override
+    public Scanner getScannerDevice(){
+        return scannerDevice;
+    }
 }

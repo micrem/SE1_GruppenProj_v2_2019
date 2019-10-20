@@ -1,9 +1,8 @@
 package employees;
 
-import baggageScanner.StatusBaggageScanner;
 import baggageScanner.RollerConveyer;
 
-public class InspectorRollerConveyer extends Inspector implements iInspectorRollerConveyer {
+public class InspectorRollerConveyer extends Inspector implements IInspectorRollerConveyer {
 
 
     RollerConveyer assignedConveyer;

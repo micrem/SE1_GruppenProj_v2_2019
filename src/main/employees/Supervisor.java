@@ -4,7 +4,7 @@ package employees;
 import baggageScanner.WorkplaceSupervision;
 import idCard.*;
 
-public class Supervisor extends Employee implements iSupervisor{
+public class Supervisor extends Employee implements ISupervisor {
     private boolean isSenior;
     private boolean isExecutive;
     private IIDCard idCard;

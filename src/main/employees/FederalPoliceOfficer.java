@@ -3,7 +3,7 @@ package employees;
 
 import baggageScanner.BaggageScanner;
 
-public class FederalPoliceOfficer extends Employee implements iFederalPoliceOfficer{
+public class FederalPoliceOfficer extends Employee implements IFederalPoliceOfficer {
     BaggageScanner assignedBaggageScanner;
     String grade;
     FederalPoliceOfficeRegis federalPoliceOfficeRegis;

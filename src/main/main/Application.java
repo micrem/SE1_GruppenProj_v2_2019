@@ -1,7 +1,6 @@
 package main;
 
 import baggageScanner.BaggageScanner;
-import baggageScanner.IBaggageScanner;
 import baggageScanner.PlasticTray;
 import cardReader.*;
 import employees.*;
@@ -37,39 +36,39 @@ public class Application {
         ICardReader cardReader = BS1.getOperatingStation().getCardReader();
         int tempPin;
 
-        iInspectorManualPostControl inspManCtrl = new InspectorManualPostControl(IDGenerator.getID(), "Mueller", "10.10.1990", false);
+        IInspectorManualPostControl inspManCtrl = new InspectorManualPostControl(IDGenerator.getID(), "Mueller", "10.10.1990", false);
             tempPin = r.nextInt(9999);
             tempCard = getCardWithPinType( cardReader, IDGenerator.getLastID(), cardValidUntil, CardType.staff, ProfileType.O,tempPin);
             inspManCtrl.giveCard(tempCard);
             inspManCtrl.giveCardPin(tempPin);
 
-        iInspectorOperatingStation inspOpStation = new InspectorOperationStation(IDGenerator.getID(), "Mueller", "10.10.1990", false);
+        IInspectorOperatingStation inspOpStation = new InspectorOperationStation(IDGenerator.getID(), "Mueller", "10.10.1990", false);
             tempPin = r.nextInt(9999);
             tempCard = getCardWithPinType( cardReader, IDGenerator.getLastID(), cardValidUntil, CardType.staff, ProfileType.O,tempPin);
             inspOpStation.giveCard(tempCard);
             inspOpStation.giveCardPin(tempPin);
 
-        iInspectorRollerConveyer inspRollConv = new InspectorRollerConveyer(IDGenerator.getID(), "Mueller", "10.10.1990", false);
+        IInspectorRollerConveyer inspRollConv = new InspectorRollerConveyer(IDGenerator.getID(), "Mueller", "10.10.1990", false);
             tempPin = r.nextInt(9999);
             tempCard = getCardWithPinType( cardReader, IDGenerator.getLastID(), cardValidUntil, CardType.staff, ProfileType.O,tempPin);
             inspRollConv.giveCard(tempCard);
             inspRollConv.giveCardPin(tempPin);
 
-        iSupervisor supervisor = new Supervisor(IDGenerator.getID(), "Mueller", "10.10.1990", false, true);
+        ISupervisor supervisor = new Supervisor(IDGenerator.getID(), "Mueller", "10.10.1990", false, true);
             tempPin = r.nextInt(9999);
             tempCard = getCardWithPinType( cardReader, IDGenerator.getLastID(), cardValidUntil, CardType.staff, ProfileType.O,tempPin);
             supervisor.giveCard(tempCard);
             supervisor.giveCardPin(tempPin);
 
         FederalPoliceOfficeRegis federalPoliceOfficeRegis = new FederalPoliceOfficeRegis();
-        iFederalPoliceOfficer fedOfficer = new FederalPoliceOfficer(IDGenerator.getID(), "Mueller", "10.10.1990", "PolizeiPraesedent",federalPoliceOfficeRegis);
+        IFederalPoliceOfficer fedOfficer = new FederalPoliceOfficer(IDGenerator.getID(), "Mueller", "10.10.1990", "PolizeiPraesedent",federalPoliceOfficeRegis);
         tempPin = r.nextInt(9999);
         tempCard = getCardWithPinType( cardReader, IDGenerator.getLastID(), cardValidUntil, CardType.external, ProfileType.O,tempPin);
         fedOfficer.giveCard(tempCard);
         fedOfficer.giveCardPin(tempPin);
         federalPoliceOfficeRegis.addFederalPoliceOfficer(fedOfficer);
 
-        iTechnician techWorker = new Technician(IDGenerator.getID(), "Mueller", "10.10.1990");
+        ITechnician techWorker = new Technician(IDGenerator.getID(), "Mueller", "10.10.1990");
             tempPin = r.nextInt(9999);
             tempCard = getCardWithPinType( cardReader, IDGenerator.getLastID(), cardValidUntil, CardType.external, ProfileType.O,tempPin);
             techWorker.giveCard(tempCard);

@@ -1,10 +1,9 @@
 package employees;
 
 import baggageScanner.*;
-import baggageScanner.StatusBaggageScanner;
 
 
-public class InspectorOperationStation extends Inspector implements iInspectorOperatingStation{
+public class InspectorOperationStation extends Inspector implements IInspectorOperatingStation {
     OperatingStation assignedOS;
     public InspectorOperationStation(int pid, String pname, String pbirthDate, boolean pisSenior) {
         super(pid, pname, pbirthDate, pisSenior);
@@ -12,22 +11,6 @@ public class InspectorOperationStation extends Inspector implements iInspectorOp
     @Override
     public void setAssignedOS(OperatingStation passignedOS){assignedOS=passignedOS;}
 
-    @Override
-    public void CheckLuggage(PlasticTray plasticTray){
-        if(assignedOS.getBaggageScanner().getStatusBaggerScanner()==StatusBaggageScanner.inUse){
-            if(true/*messer*/)
-                DiscoverKnife();
-            else if(true/*waffe*/){
-                pushAlarmButton();
-                DiscoverGun();}
-            else if(true/*expl*/){
-                pushAlarmButton();
-                discoverExplosive(0, 0);}
-            else
-            //fuck yeah
-            ;
-        }
-    }
 
     @Override
     public boolean LogIn(){
@@ -43,25 +26,25 @@ public class InspectorOperationStation extends Inspector implements iInspectorOp
     }
     @Override
     public void PushButtonSquare(){
-        assignedOS.buttonRechteck();
+        assignedOS.buttonSquare();
     }
     @Override
-    public void DiscoverKnife(){
-        System.out.println("Messer an der {0} Stelle gefunden");
+    public void discoverKnife(int position, int layerID){
+        System.out.println("Messer an der Stelle" + position + " in layer "+layerID +" gefunden!");
         //Methode InsMPC.ConfiscateKnife(Tray tray);
     }
     @Override
-    public void DiscoverGun(){
-        System.out.println("Waffe an der {0} Stelle gefunden, Alarm!");
+    public void discoverGun(int position, int layerID){
+        System.out.println("Waffe an der Stelle" + position + " in layer "+layerID +" gefunden, Alarm!");
     }
 
     @Override
     public void discoverExplosive(int position, int layerID){
-        System.out.println("Sprengstoff an der {0} Stelle gefunden, Alarm!");
+        System.out.println("Sprengstoff an der Stelle" + position + " in layer "+layerID +" gefunden, Alarm!");
     }
     @Override
     public void PushButtonLeft(){
-        //InsRC.PushTray(Tray tray);
+        assignedOS.buttonLeft();
     }
     public void pushAlarmButton(){
         assignedOS.getBaggageScanner().alarmButtonPushed();
