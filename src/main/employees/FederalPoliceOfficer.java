@@ -31,8 +31,10 @@ public class FederalPoliceOfficer extends Employee implements IFederalPoliceOffi
         federalPoliceOfficeRegis.getRoboter()[0].destroyBaggage();
 
     }
-
-
+    @Override
+    public FederalPoliceOfficeRegis getFederalPoliceOfficeRegis() {
+        return federalPoliceOfficeRegis;
+    }
 
 
 }
