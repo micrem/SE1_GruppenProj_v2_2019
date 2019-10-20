@@ -38,25 +38,25 @@ public class Application {
 
         IInspectorManualPostControl inspManCtrl = new InspectorManualPostControl(IDGenerator.getID(), "Mueller", "10.10.1990", false);
             tempPin = r.nextInt(9999);
-            tempCard = getCardWithPinType( cardReader, IDGenerator.getLastID(), cardValidUntil, IDCardType.staff, ProfileType.O,tempPin);
+            tempCard = getCardWithPinType( cardReader, IDGenerator.getLastID(), cardValidUntil, IDCardType.staff, ProfileType.I,tempPin);
             inspManCtrl.giveCard(tempCard);
             inspManCtrl.giveCardPin(tempPin);
 
         IInspectorOperatingStation inspOpStation = new InspectorOperationStation(IDGenerator.getID(), "Mueller", "10.10.1990", false);
             tempPin = r.nextInt(9999);
-            tempCard = getCardWithPinType( cardReader, IDGenerator.getLastID(), cardValidUntil, IDCardType.staff, ProfileType.O,tempPin);
+            tempCard = getCardWithPinType( cardReader, IDGenerator.getLastID(), cardValidUntil, IDCardType.staff, ProfileType.I,tempPin);
             inspOpStation.giveCard(tempCard);
             inspOpStation.giveCardPin(tempPin);
 
         IInspectorRollerConveyer inspRollConv = new InspectorRollerConveyer(IDGenerator.getID(), "Mueller", "10.10.1990", false);
             tempPin = r.nextInt(9999);
-            tempCard = getCardWithPinType( cardReader, IDGenerator.getLastID(), cardValidUntil, IDCardType.staff, ProfileType.O,tempPin);
+            tempCard = getCardWithPinType( cardReader, IDGenerator.getLastID(), cardValidUntil, IDCardType.staff, ProfileType.I,tempPin);
             inspRollConv.giveCard(tempCard);
             inspRollConv.giveCardPin(tempPin);
 
         ISupervisor supervisor = new Supervisor(IDGenerator.getID(), "Mueller", "10.10.1990", false, true);
             tempPin = r.nextInt(9999);
-            tempCard = getCardWithPinType( cardReader, IDGenerator.getLastID(), cardValidUntil, IDCardType.staff, ProfileType.O,tempPin);
+            tempCard = getCardWithPinType( cardReader, IDGenerator.getLastID(), cardValidUntil, IDCardType.staff, ProfileType.S,tempPin);
             supervisor.giveCard(tempCard);
             supervisor.giveCardPin(tempPin);
 
@@ -70,7 +70,7 @@ public class Application {
 
         ITechnician techWorker = new Technician(IDGenerator.getID(), "Mueller", "10.10.1990");
             tempPin = r.nextInt(9999);
-            tempCard = getCardWithPinType( cardReader, IDGenerator.getLastID(), cardValidUntil, IDCardType.external, ProfileType.O,tempPin);
+            tempCard = getCardWithPinType( cardReader, IDGenerator.getLastID(), cardValidUntil, IDCardType.external, ProfileType.T,tempPin);
             techWorker.giveCard(tempCard);
             techWorker.giveCardPin(tempPin);
 
@@ -100,7 +100,7 @@ public class Application {
 
         plasticTray.setHandbaggage(testBag);
 
-        inspOpStation.LogIn();//hier IDKarte Logik, gut gemacht
+        inspOpStation.LogIn();
 
         //START OF SECURITY
         passengers.get(1).putBaggageInPlasticTray(BS1, 0);

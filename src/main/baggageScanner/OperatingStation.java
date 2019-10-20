@@ -48,6 +48,10 @@ public class OperatingStation implements IOperatingStation {
 
     @Override
     public void buttonSquare() {
+        if(!operatorLoggedIn) {
+            System.out.println("Error: Square Button inactive, no operator logged in.");
+            return;
+        }
         baggageScanner.getScannerDevice().buttonSquarePushed(inspector, string_matcher);
 //        String content;
 //        int position;
@@ -71,31 +75,32 @@ public class OperatingStation implements IOperatingStation {
 
     //TODO: extract basic login logic into "logInEmployee(Employee)" which also registeres employees with cardType into "registeredUsers" map
     @Override
-    public boolean logInOperator(IInspectorOperatingStation employee) {
+    public boolean logInOperator(IInspectorOperatingStation inspector) {
         boolean enteredCorrectPin = false;
         ICardReader cardReader = this.getCardReader();
-        employee.insertCardIntoReader(cardReader);
+        inspector.insertCardIntoReader(cardReader);
 
         if (       cardReader.getCardType() != IDCardType.staff
                 || cardReader.isCardLocked()
                 || cardReader.getCardProfileType() != ProfileType.I) {
-            employee.giveCard(cardReader.ejectCard());
+            inspector.giveCard(cardReader.ejectCard());
             return false;
         }
 
         while (!enteredCorrectPin) {
-            enteredCorrectPin = employee.enterPin(cardReader);
+            enteredCorrectPin = inspector.enterPin(cardReader);
             if (cardReader.isCardLocked()) {
-                employee.giveCard(cardReader.ejectCard());
+                inspector.giveCard(cardReader.ejectCard());
                 return false;
             }
         }
 
-        employee.giveCard(cardReader.ejectCard());
+        inspector.giveCard(cardReader.ejectCard());
 
         if (enteredCorrectPin){
             operatorLoggedIn = true;
             this.getBaggageScanner().inspectorOperationsLoggedIn();
+            this.inspector = inspector;
             return true;
         }
 

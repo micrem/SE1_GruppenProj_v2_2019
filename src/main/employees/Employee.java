@@ -44,6 +44,7 @@ public abstract class Employee implements IEmployee{
     public IIDCard insertCardIntoReader(ICardReader cardReader) {
         IIDCard tempCard = card;
         card = null;
+        cardReader.insertCard(tempCard);
         return tempCard;
     }
 

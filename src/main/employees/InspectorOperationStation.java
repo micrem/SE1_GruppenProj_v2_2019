@@ -15,15 +15,18 @@ public class InspectorOperationStation extends Inspector implements IInspectorOp
     @Override
     public boolean LogIn(){
         if (this.assignedOS==null){ return false;}
-        assignedOS.logInOperator(this);
-
-        System.out.println("Inspector has logged in successfully."); //spaeter ueberschreiben mit methoden aus cardreader
-        return true;
+        if (assignedOS.logInOperator(this)) {
+            System.out.println("Inspector has logged in to Operations Station.");
+            return true;
+        }
+        return false;
     }
+
     @Override
     public void PushButtonRight(){
         assignedOS.buttonRight();
     }
+
     @Override
     public void PushButtonSquare(){
         assignedOS.buttonSquare();
