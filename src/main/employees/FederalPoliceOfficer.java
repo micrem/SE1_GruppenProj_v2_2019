@@ -29,13 +29,10 @@ public class FederalPoliceOfficer extends Employee implements IFederalPoliceOffi
     @Override
     public void roboterDestroyBaggage() {
         federalPoliceOfficeRegis.getRoboter()[0].destroyBaggage();
-
     }
     @Override
     public FederalPoliceOfficeRegis getFederalPoliceOfficeRegis() {
         return federalPoliceOfficeRegis;
     }
-
-
 }
 
