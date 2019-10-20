@@ -45,11 +45,11 @@ public class OperatingStation implements IOperatingStation, IBaggageScannerStati
             return;
         }
         baggageScanner.getOperatingStation().putPlasticTray(baggageScanner.getBelt().removePlasticTray());
-        baggageScanner.getScannerDevice().buttonRightPushed()
+        baggageScanner.getScannerDevice().buttonRightPushed();
     }
 
     @Override
-    public void buttonRechteck() {
+    public void buttonSquare() {
         baggageScanner.getScannerDevice().buttonSquarePushed(inspector, string_matcher);
 //        String content;
 //        int position;
