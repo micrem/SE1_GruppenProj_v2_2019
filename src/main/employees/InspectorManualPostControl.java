@@ -20,7 +20,7 @@ public class InspectorManualPostControl extends Inspector implements IInspectorM
 
 
         // wenn Wüschtest erfolgreich ist --> Gepäck zerstören
-        assignedMPC.getBaggageScanner().getFederalPoliceOfficer().federalPoliceOfficeRegis.getRoboter()[0].destroyBaggage();
+        assignedMPC.getBaggageScanner().getFederalPoliceOfficer().getFederalPoliceOfficeRegis().getRoboter()[0].destroyBaggage();
     }
     @Override
     public void PushBack(){
