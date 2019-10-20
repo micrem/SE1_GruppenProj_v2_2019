@@ -8,4 +8,5 @@ public interface IEmployee {
     void giveCardPin(int pin);
     void giveCard(IIDCard card);
     IIDCard insertCardIntoReader(ICardReader cardReader);
+    int getID();
 }

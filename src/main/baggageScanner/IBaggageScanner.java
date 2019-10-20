@@ -1,19 +1,20 @@
 package baggageScanner;
 
+import cardReader.ProfileType;
 import employees.*;
 
 public interface IBaggageScanner {
-    void moveBeltForward();
+    void moveBeltForward(int workerID);
 
-    void moveBeltBackward();
+    void moveBeltBackward(int workerID);
 
-    boolean scan();
+    boolean scan(int workerID);
 
-    void alarm();
+    void alarm(int workerID);
 
-    void report();
+    void report(int position, ProhibitedItems foundItem);
 
-    void maintenance();
+    void maintenance(int workerID);
 
     void onOffButton();
 
@@ -38,6 +39,8 @@ public interface IBaggageScanner {
     IFederalPoliceOfficer getFederalPoliceOfficer();
 
     void inspectorOperationsLoggedIn();
+
+    void registerUser(int id, ProfileType profileType);
 
     Scanner getScannerDevice();
 }

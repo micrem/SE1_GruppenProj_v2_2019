@@ -44,12 +44,26 @@ public class OperatingStation implements IOperatingStation, IBaggageScannerStati
         if(baggageScanner.getStatusBaggerScanner()!=StatusBaggageScanner.activated){
             return;
         }
-        baggageScanner.getScannerDevice().buttonRightPushed();
+        baggageScanner.getOperatingStation().putPlasticTray(baggageScanner.getBelt().removePlasticTray());
+        baggageScanner.getScannerDevice().buttonRightPushed()
     }
 
     @Override
-    public void buttonSquare() {
+    public void buttonRechteck() {
         baggageScanner.getScannerDevice().buttonSquarePushed(inspector, string_matcher);
+//        String content;
+//        int position;
+//        if(getBaggageScanner().scan()==false) return;
+//        if (plasticTray==null || plasticTray.getHandbaggage()==null) return;
+//        for (int i = 0; i < 5; i++) {
+//            content = plasticTray.getHandbaggage().getLayer(i).getContent();
+//            position = string_matcher.search(content, ProhibitedItems.explosive.getItemString()) ;
+//            if (position!=-1) {
+//                System.out.println("Scanenr found explosives at:"+position+" in layer:"+i);
+//                inspector.discoverExplosive(position, i);
+//                return;
+//            }
+//        }
     }
 
     @Override
@@ -58,6 +72,7 @@ public class OperatingStation implements IOperatingStation, IBaggageScannerStati
         baggageScanner.getScannerDevice().buttonLeftPushed();
     }
 
+    //TODO: extract basic login logic into "logInEmployee(Employee)" which also registeres employees with cardType into "registeredUsers" map
     @Override
     public boolean logInOperator(IInspectorOperatingStation employee) {
         boolean enteredCorrectPin = false;

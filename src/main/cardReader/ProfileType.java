@@ -10,7 +10,7 @@ package cardReader;
  * 2 MoveBeltBackwards
  * 3 Scan
  * 4 Alarm
- * 5 Report
+ * 5 Record
  * 6 Maintenance
  */
 public enum ProfileType {

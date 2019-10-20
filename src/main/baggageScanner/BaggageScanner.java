@@ -1,7 +1,12 @@
 package baggageScanner;
 
+import cardReader.ProfileType;
 import configuration.Configuration;
 import employees.*;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Vector;
 
 public class BaggageScanner implements IBaggageScanner {
     private StatusBaggageScanner status;
@@ -17,8 +22,13 @@ public class BaggageScanner implements IBaggageScanner {
     private IFederalPoliceOfficer federalPoliceOfficer;
     private Scanner scannerDevice;
 
+    private Map<Integer, ProfileType> registeredUsers;
+    private Vector<Record> records;
 
-    public BaggageScanner(String keyAES, Configuration config) {
+
+
+
+    public BaggageScanner (String keyAES, Configuration config){
         this.status = StatusBaggageScanner.shutdown;
         trayStation = new Tray(this);
         rollerConveyer = new RollerConveyer(this);
@@ -27,10 +37,11 @@ public class BaggageScanner implements IBaggageScanner {
         manualPostControl = new ManualPostControl(this);
         workplaceSupervision = new WorkplaceSupervision(this);
         scannerDevice = new Scanner(this);
+        registeredUsers = new HashMap<>();
     }
 
     @Override
-    public Tray getTray() {
+    public Tray getTray(){
         return trayStation;
     }
 
@@ -48,7 +59,6 @@ public class BaggageScanner implements IBaggageScanner {
     public OperatingStation getOperatingStation() {
         return operatingStation;
     }
-
 
     @Override
     public ManualPostControl getManualPostControl() {
@@ -71,6 +81,11 @@ public class BaggageScanner implements IBaggageScanner {
         if (status == StatusBaggageScanner.shutdown) {
             status = StatusBaggageScanner.activated;
         }
+    }
+
+    @Override
+    public void registerUser(int id, ProfileType profileType) {
+        registeredUsers.put(id, profileType);
     }
 
     @Override
@@ -103,17 +118,17 @@ public class BaggageScanner implements IBaggageScanner {
      }*/
 
     @Override
-     public void moveBeltForward(){
+     public void moveBeltForward(int workerID){
 
      }
 
     @Override
-    public void moveBeltBackward() {
+    public void moveBeltBackward(int workerID) {
 
     }
 
     @Override
-    public boolean scan() {
+    public boolean scan(int workerID) {
         if (status==StatusBaggageScanner.activated){
             status = StatusBaggageScanner.inUse;
             return true;
@@ -122,23 +137,27 @@ public class BaggageScanner implements IBaggageScanner {
     }
 
     @Override
-    public void alarm() {
+    public void alarm(int workerID) {
 
     }
 
     @Override
-    public void report() {
-
+    public void report(int position, ProhibitedItems foundItem) {
+        records.add(new Record(position,foundItem));
     }
 
     @Override
-    public void maintenance() {
+    public void maintenance(int workerID) {
 
     }
 
     @Override
     public void onOffButton() {
-        //todo: add on/off logic, change state
+        if (this.status!=StatusBaggageScanner.shutdown){
+            this.status = StatusBaggageScanner.shutdown;
+        } else {
+            this.status=StatusBaggageScanner.deactivated;
+        }
     }
 
     @Override
@@ -146,7 +165,7 @@ public class BaggageScanner implements IBaggageScanner {
          if(this.status==StatusBaggageScanner.inUse)
             status = StatusBaggageScanner.locked;
          else
-             System.out.println("Error: Scanner aktuell nicht im inUse-Modus");
+             System.out.println("Error: Scanner aktuell nicht im inUse-Modus, Alarm kann nicht ausgelöst werden.");
     }
 
     @Override
