@@ -70,11 +70,11 @@ public class Scanner implements IBaggageScannerStation{
         }
     }
     public void buttonRightPushed(){
-        baggageScanner.getScannerDevice().putPlasticTray(baggageScanner.getOperatingStation().removePlasticTray());
+        this.putPlasticTray(baggageScanner.getBelt().removePlasticTray());
 
     }
     public void buttonLeftPushed(){
-        baggageScanner.getScannerDevice().putPlasticTray(baggageScanner.getManualPostControl().removePlasticTray());
+       this.putPlasticTray(baggageScanner.getManualPostControl().removePlasticTray());
     }
 
 }

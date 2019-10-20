@@ -6,10 +6,9 @@ import employees.IInspectorOperatingStation;
 import idCard.*;
 import string_matching.*;
 
-public class OperatingStation implements IOperatingStation, IBaggageScannerStation {
+public class OperatingStation implements IOperatingStation {
 
     private IBaggageScanner baggageScanner;
-    private PlasticTray plasticTray;
     private ICardReader cardReader;
     private Configuration config;
     private IStringMatching string_matcher;
@@ -44,7 +43,6 @@ public class OperatingStation implements IOperatingStation, IBaggageScannerStati
         if(baggageScanner.getStatusBaggerScanner()!=StatusBaggageScanner.activated){
             return;
         }
-        baggageScanner.getOperatingStation().putPlasticTray(baggageScanner.getBelt().removePlasticTray());
         baggageScanner.getScannerDevice().buttonRightPushed();
     }
 
@@ -68,8 +66,7 @@ public class OperatingStation implements IOperatingStation, IBaggageScannerStati
 
     @Override
     public void buttonLeft() {
-        if (plasticTray==null || plasticTray.getHandbaggage()==null) return;
-        baggageScanner.getScannerDevice().buttonLeftPushed();
+        baggageScanner.getScannerDevice().buttonRightPushed();
     }
 
     //TODO: extract basic login logic into "logInEmployee(Employee)" which also registeres employees with cardType into "registeredUsers" map
@@ -105,26 +102,8 @@ public class OperatingStation implements IOperatingStation, IBaggageScannerStati
         return false;
     }
 
-    @Override
     public IBaggageScanner getBaggageScanner() {
         return baggageScanner;
     }
 
-    @Override
-    public PlasticTray peekPlasticTray() {
-        return plasticTray;
-    }
-
-    @Override
-    public PlasticTray removePlasticTray() {
-        PlasticTray tempBaggage = this.plasticTray;
-        this.plasticTray = null;
-        return tempBaggage;
-    }
-
-    @Override
-    public void putPlasticTray(PlasticTray plasticTray) {
-        this.plasticTray = plasticTray;
-
-    }
 }
