@@ -3,7 +3,7 @@ package employees;
 import java.util.ArrayList;
 
 public class FederalPoliceOfficeRegis {
-    private PoliceOfficeRegis profilTyp;
+    private FederalPoliceOfficer profilTyp;
     private ArrayList<IFederalPoliceOfficer> federalPoliceOfficersList;
     private Roboter[] roboter = new Roboter[3];
 
