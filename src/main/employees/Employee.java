@@ -47,5 +47,10 @@ public abstract class Employee implements IEmployee{
         return tempCard;
     }
 
+    @Override
+    public int getID() {
+        return id;
+    }
+
 
 }
