@@ -38,7 +38,7 @@ public class Scanner implements IBaggageScannerStation{
     public void buttonSquarePushed(IInspectorOperatingStation inspector, IStringMatching string_matcher){
         String content;
         int position;
-        if(getBaggageScanner().scan()==false) return;
+        if(getBaggageScanner().scan(inspector.getID())==false) return;
         if (plasticTray==null || plasticTray.getHandbaggage()==null) return;
         for (int i = 0; i < 5; i++) {
             content = plasticTray.getHandbaggage().getLayer(i).getContent();
