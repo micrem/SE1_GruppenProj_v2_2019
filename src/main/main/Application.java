@@ -114,20 +114,7 @@ public class Application {
 
 
         System.out.println("first 50 baggage glyphs:\n\t" + testBag.getLayer(4).getContent().substring(0, 50));
-        //scanner.registerInspectorManualContr(inspManCtrl);
-        //read passanger data -> 2 Maps:
-        //map id - passagierObject
-        //map passangerID - handgepäckID
 
-        //initialize all needed vars/classes
-        //new employees+cards etc
-        //new scanner
-        //set scanner state
-        //register users
-        //start machine
-        //change to "ON" state
-
-        //ON state
 
     }
 
